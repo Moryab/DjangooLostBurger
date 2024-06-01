@@ -1,0 +1,181 @@
+/*COLORES BARRA WIDGETS*/
+.estilopendiente{
+    background-color: rgba(0, 140, 255, 0.8);
+    color:white;
+}
+
+.enruta{
+    background-color: rgba(255, 145, 0, 0.8);
+    color:rgb(255, 255, 255);
+}
+
+.entregado{
+    background-color: rgba(50, 175, 0, 0.8);
+    color:white;
+}
+
+.cancelado{
+    background-color: rgba(221, 27, 27, 0.8);
+    color:white;
+}
+
+.small-text {
+    font-size: smaller;
+}
+
+/*PEDIDOS*/
+.btn-estado,.btn-info {
+    background-color: #0097A7;
+    border: none;
+    color: white;
+    padding: 8px 24px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 1;
+    transition: 0.3s;
+    border-radius: 10px; /* Ajusta el valor según el grado de redondez que desees*/
+    text-decoration: none;
+    
+  }
+  
+  .btn-info:hover {
+    opacity: 0.6;
+  }
+
+
+  /* Estilos para el precio */
+.precio-card {
+    /* Ajusta el color del precio a blanco */
+    color: #ffffff;
+    font-weight: bold; /* Hace que el precio sea negrita */
+}
+    /* Estilos para el ícono del carrito */
+.precio-card i {
+    /* Ajusta el color del ícono a blanco */
+    color: #ffffff;
+}
+/* Ajuste de altura y ancho las Imagenes en las tarjetas */
+.tab-content .card-img-top {
+    width: 100%; /* Establecer el ancho al 100% para que ocupe todo el ancho de su contenedor */
+    height: auto; /* Permitir que la altura se ajuste automáticamente para mantener la proporción */
+    max-height: 200px; /* Establecer una altura máxima */
+    height: 200px;
+  }
+  /* Ajuste de animaciones de las imagenes de las tarjetas */
+  .card-img-top{
+    border: 1px solid #ccc; /* Borde delgado */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombreado suave */
+    transition: transform 0.3s ease;
+  }
+  .card-img-top:hover {
+    transform: scale(1.05); /* Hace que la imagen se agrande ligeramente al pasar el mouse sobre ella */
+  }
+  .card-body {
+    font-size: 1em; /* Tamaño de fuente relativo */
+  }
+  /* Posicion del boton agregar dentro de la card */
+  .card {
+    position: relative;
+  }
+  .card .btn {
+    position: absolute;
+    bottom: -1px; /* Ajusta esta propiedad según sea necesario */
+    left: 50%; /* Coloca el botón en el centro horizontalmente */
+    transform: translateX(-50%); /* Ajusta la posición horizontal */
+    padding: 6px 16px; /* Ajusta el padding del botón */
+  }
+
+  /*boton precio en agregar productos*/
+.btn {
+    background-color: #0097A7;
+    border: none;
+    color: white;
+    padding: 8px 24px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 1;
+    transition: 0.3s;
+  }
+  
+  .btn:hover {
+    opacity: 0.6;
+  }
+
+  /* Boton de añadir producto en Admin */
+.btnadd {
+    position: absolute;
+    top: 80px;
+    right: 140px;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #00bfff;
+    background-color: #00bfff;
+    transition: all 0.3s;
+}
+.btnadd .btnadd__text {
+    transform: translateX(30px);
+    color: #fff;
+    font-weight: 600;
+}
+
+.btnadd .btnadd__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: #00bfff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnadd .svg {
+    width: 30px;
+    stroke: #fff;
+}
+
+.btnadd:hover .btnadd__icon {
+    width: 148px;
+    transform: translateX(0);
+    color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+    /* Ajusta los estilos para dispositivos móviles */
+    .btnadd {
+        top: 80px; /* Cambia la distancia desde la parte superior */
+        right: 30px; /* Ajusta la distancia desde la derecha */
+    }
+}
+
+.btn-confirm {
+    background-color: rgb(21, 213, 21);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+}
+
+.btn-cancel {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+      /* Estilos para los iconos perfil*/
+      .icono-salir,
+      .icono-perfil {
+        color: #adadad; 
+    }
+
+    

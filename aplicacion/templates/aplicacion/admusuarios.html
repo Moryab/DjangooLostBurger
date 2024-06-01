@@ -1,0 +1,76 @@
+{% extends "aplicacion/baseadmin.html" %}
+{% load static %}
+
+{% block contenidoadmin %}
+    <!--Listado y boton usuarios-->
+    <link rel="stylesheet" href="{% static 'aplicacion/css/admbtn.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <div id="usuarios" class="content-section">
+        <div class="container mt-5">
+            <div class="header-section"> <!-- Clase agregada para manejar el título y el botón -->
+                <h1>Lista de usuarios</h1>
+                <button class="cssbuttons-io-button" onclick="window.location.href='{% url 'usuarios' %}'">
+                    Registrar un usuario
+                    <div class="icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+            <input class="form-control mb-4" id="tableSearch" type="text" placeholder="Buscar usuario...">
+            <div class="table-responsive">
+                <table class="table mt-2">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                            <th>Email</th>
+                            <th class="text-right">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pedidosTable">
+                        <!-- Ejemplo de filas -->
+                        <tr>
+                            <td>#1234</td>
+                            <td>Juan Pérez</td>
+                            <td>+56923423423</td>
+                            <td>Calle Falsa 123</td>
+                            <td>juan.perez@example.com</td>
+                            <td>
+                                <a class="btn btn-sm btn-editar" href="{% url 'editaruser' %}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-sm btn-borrar btn-confirmar" href="">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#1235</td>
+                            <td>Maria López</td>
+                            <td>+56923423423</td>
+                            <td>Avenida Siempreviva 456</td>
+                            <td>maria.lopez@example.com</td>
+                            <td>
+                                <a class="btn btn-sm btn-editar" href="{% url 'editaruser' %}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-sm btn-borrar btn-confirmar" href="">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Agrega más filas según sea necesario -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'aplicacion/js/confirmacion.js' %}"></script>
+
+{% endblock contenidoadmin %}

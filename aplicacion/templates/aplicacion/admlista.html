@@ -1,0 +1,89 @@
+{% extends "aplicacion/baseadmin.html" %}
+{% load static %}
+
+{% block contenidoadmin %}
+
+    <link rel="stylesheet" href="{% static 'aplicacion/css/admbtn.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--LISTA DE PRODUCTOS-->
+    <div id="lista" class="content-section">
+        <div class="container mt-5"><!--main container-->
+            <h1>Listado de Productos</h1>
+            <input class="form-control mb-4" id="tableSearch" type="text" placeholder="Buscar Productos...">
+            <div class="mt-2 table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Imagen</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Hamburguesa de Pavo</td>
+                            <td><img src="{% static 'aplicacion/img/hpavo.png' %}" alt="Hamburguesa de Pavo" height="50"></td>
+                            <td>carne de pavo, lechuga, tomate, salsa de yogur griego</td>
+                            <td>$5.500</td>
+                            <td>
+                                <a class="btn btn-sm btn-editar" href="{% url 'editarprod' %}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-sm btn-borrar btn-confirmar" href="">
+                                    <i class="fas fa-trash"></i>
+                                </a>                              
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Hamburguesa BBQ</td>
+                            <td><img src="{% static 'aplicacion/img/hbbq.png' %}" alt="Hamburguesa BBQ" height="50"></td>
+                            <td>carne de res, BBQ, aros de cebolla, tocino, queso cheddar</td>
+                            <td>$7.500</td>
+                            <td>
+                                <a class="btn btn-sm btn-editar" href="{% url 'editarprod' %}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-sm btn-borrar btn-confirmar" href="">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Hamburguesa Vegana</td>
+                            <td><img src="{% static 'aplicacion/img/hvegana.png' %}" alt="Hamburguesa Vegana" height="50"></td>
+                            <td>hamburguesa vegana (mezcla de garbanzos, remolacha y avena), pan integral, lechuga,
+                                tomate,
+                                pepinillos
+                            </td>
+                            <td>$6.500</td>
+                            <td>
+                                <a class="btn btn-sm btn-editar" href="{% url 'editarprod' %}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-sm btn-borrar btn-confirmar" href="">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination text-center">
+                    <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+                </ul>
+            </div>
+        </div><!--main container ends-->
+    </div>
+
+    <script src="{% static 'aplicacion/js/confirmacion.js' %}"></script>
+
+{% endblock contenidoadmin %}

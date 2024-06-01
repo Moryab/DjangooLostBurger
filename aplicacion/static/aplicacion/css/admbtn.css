@@ -1,0 +1,199 @@
+/*Estilo de boton Registrar Usuario*/
+.header-section {
+    display: flex;
+    justify-content: space-between; /* Alinea el título a la izquierda y el botón a la derecha */
+    align-items: center;
+    padding: 0 15px;
+  }
+  .header-section h1 {
+    margin-bottom: 10px; /* Espacio entre el título y el botón en móviles */
+  }
+  
+  .cssbuttons-io-button {
+    background: #607fd4;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #607fd4;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+  }
+  
+  .cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #526db9;
+    right: 0.3em;
+    transition: all 0.3s;
+  }
+  
+  .cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+  }
+  
+  .cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #607fd4;
+  }
+  
+  .cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+  }
+  
+  .cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+  }
+  
+/*Estilo de boton Añadir Producto*/
+.cssbuttons-io-button-añadir {
+  background: #607fd4;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #607fd4;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+  left: 85%;
+  top: 10px;
+}
+
+.cssbuttons-io-button-añadir .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #526db9;
+  right: 0.3em;
+  transition: all 0.3s;
+  
+}
+
+.cssbuttons-io-button-añadir:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button-añadir .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #607fd4;
+}
+
+.cssbuttons-io-button-añadir:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button-añadir:active .icon {
+  transform: scale(0.95);
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+  .cssbuttons-io-button-añadir {
+    font-size: 15px;
+    padding-left: 1em;
+    height: 2.5em;
+    padding-right: 2.8em;
+    top: 10px;
+  }
+
+  .cssbuttons-io-button-añadir .icon {
+    height: 2em;
+    width: 2em;
+    right: 0.2em;
+  }
+
+  .cssbuttons-io-button-añadir:hover .icon {
+    width: calc(100% - 0.4em);
+  }
+
+  .cssbuttons-io-button-añadir .icon svg {
+    width: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .cssbuttons-io-button-añadir {
+    font-size: 18px;
+    padding-left: 0.8em;
+    height: 2.2em;
+    padding-right: 2.5em;
+    left: 200px;
+  }
+
+  .cssbuttons-io-button-añadir .icon {
+    height: 1.8em;
+    width: 1.8em;
+    right: 0.2em;
+  }
+
+  .cssbuttons-io-button-añadir:hover .icon {
+    width: calc(100% - 0.4em);
+  }
+
+  .cssbuttons-io-button-añadir .icon svg {
+    width: 0.9em;
+  }
+}
+
+
+
+  /* Estilos para el botón de editar */
+.btn-editar {
+  background-color: #0097A7; /* Azul */
+  color: #fff; /* Texto blanco */
+  border: none; /* Sin borde */
+}
+
+.btn-editar:hover {
+  background-color: #01afc3; /* Azul más oscuro al pasar el mouse */
+  color: #fff; /* Texto blanco */
+  border: none; /* Sin borde */
+}
+
+/* Estilos para el botón de borrar */
+.btn-borrar {
+  background-color: #DD2C00; /* Rojo */
+  color: #fff; /* Texto blanco */
+  border: none; /* Sin borde */
+}
+
+.btn-borrar:hover {
+  background-color: #fe3908; /* Rojo más oscuro al pasar el mouse */
+  color: #fff; /* Texto blanco */
+  border: none; /* Sin borde */
+}

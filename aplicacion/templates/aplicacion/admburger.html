@@ -1,0 +1,71 @@
+{% extends "aplicacion/baseadmin.html" %}
+{% load static %}
+
+{% block contenidoadmin %}
+
+    <!--widgets-->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Mensajes -->
+            <div class="col-md-3">
+                <div class="card widget-card">
+                    <div class="card-body">
+                        <i class="fas fa-envelope widget-icon"></i>
+                        <div>
+                            <h5 class="card-text-admin">50</h5>
+                            <p class="card-title-admin">Mensajes</p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-mensajes"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Ingresos de Hoy -->
+            <div class="col-md-3">
+                <div class="card widget-card">
+                    <div class="card-body">
+                        <i class="fas fa-dollar-sign widget-icon"></i>
+                        <h5 class="card-text-admin">$1000</h5>
+                        <p class="card-title-admin">Ingresos de Hoy</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-ingresos"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Clientes-->
+            <div class="col-md-3">
+                <div class="card widget-card">
+                    <div class="card-body">
+                        <i class="fas fa-users widget-icon"></i>
+                        <div>
+                            <h5 class="card-text-admin">100</h5>
+                            <p class="card-title-admin">Clientes</p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-clientes"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Pedidos de hoy-->
+            <div class="col-md-3">
+                <div class="card widget-card">
+                    <div class="card-body">
+                        <i class="fas fa-shopping-cart widget-icon"></i>
+                        <div>
+                            <h5 class="card-text-admin">50</h5>
+                            <p class="card-title-admin">Pedidos de Hoy</p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-pedidos"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock contenidoadmin %}
+

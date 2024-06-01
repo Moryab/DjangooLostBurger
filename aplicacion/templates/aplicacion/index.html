@@ -1,0 +1,474 @@
+{% extends "aplicacion/base.html" %}
+{% load static %}
+
+{% block contenido %}
+<link rel="stylesheet" href="{% static 'aplicacion/css/slider.css' %}">
+<link rel="stylesheet" href="{% static 'aplicacion/css/titulo.css' %}">
+
+  <!--Imagenes-->
+    <!-- Carousel -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+  
+      <!-- Indicators/dots -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+      </div>
+  
+      <!-- The slideshow/carousel -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'aplicacion/img/gg.jpeg' %}" class="d-block w-100" >
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'aplicacion/img/pp1.jpg' %}" class="d-block w-100">
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'aplicacion/img/gg2.jpg' %}" class="d-block w-100">
+          <div class="carousel-caption">
+          </div>
+        </div>
+      </div>
+  
+      <!-- Left and right controls/icons -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+
+  <!-- Nav pills -->
+  <ul class="nav nav-pills">
+    <li class="nav-item mustard-bg">
+      <a class="nav-link active" href="#completos">
+        <i class="fas fa-hotdog"></i> Completos
+      </a>
+    </li>
+    <li class="nav-item mustard-bg">
+      <a class="nav-link active" href="#hamburguesas">
+        <i class="fas fa-hamburger"></i> Hamburguesas
+      </a>
+    </li>
+    <li class="nav-item mustard-bg">
+      <a class="nav-link active" href="#pizzas">
+        <i class="fas fa-pizza-slice"></i> Pizzas
+      </a>
+    </li>
+    <li class="nav-item mustard-bg">
+      <a class="nav-link active" href="#papas">
+        <i class="fas fa-utensils"></i> Papas Fritas
+      </a>
+    </li>
+    <li class="nav-item mustard-bg">
+      <a class="nav-link active" href="#bebidas">
+        <i class="fas fa-glass-whiskey"></i> Bebidas
+      </a>
+    </li>
+  </ul>
+
+
+ <!-- TARJETAS-->
+<div class="tab-content">
+  <!--COMPLETOS-->
+  <div id="completos" class="container tab-pane active"><br>
+    <div class="container">
+      <h3 class="titulos-cards">Completos</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Esta columna ocupa el ancho completo de la página en dispositivos medianos y grandes -->
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <!-- Las tarjetas se muestran en cuatro columnas en todos los dispositivos -->
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/citaliano.png' %}" alt="citaliano">
+                <div class="card-body">
+                  <h4 class="card-title">Completo Italiano</h4>
+                  <p class="card-text">Tomate-Palta-Mayo.</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$2.500 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/golosos.png' %}" alt="guacamole">
+                <div class="card-body">
+                  <h4 class="card-title">El goloso</h4>
+                  <p class="card-text">Chucrut-Palta-Morrón o tomate-cebolla picados-Mayonesa.</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$3.500 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/aleman1.png' %}" alt="Chucrut">
+                <div class="card-body">
+                  <h4 class="card-title">Completo Aleman</h4>
+                  <p class="card-text">Tomate-Chucrut.</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$3.000 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/asss.webp' %}" alt="Hass">
+                <div class="card-body">
+                  <h4 class="card-title">Completo Hass</h4>
+                  <p class="card-text"> Carne de churrasco, palta, tomate, mayonesa y queso.</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$3.790 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- hamburguesas -->
+  <div class="tab-content">
+    <div id="hamburguesas" class="container tab-pane active"><br>
+      <div class="container">
+        <h3 class="titulos-cards">Hamburguesas</h3>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                <div class="card h-100 p-3 shadow border border-white rounded">
+                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/hbbq.png' %}" alt="hbbq">
+                  <div class="card-body">
+                    <h4 class="card-title">Hamburguesa BBQ</h4>
+                    <p class="card-text">carne de res-BBQ-aros de cebolla-tocino-queso cheddar</p>
+                    <div class="d-flex flex-column align-items-left">
+                      <label for="cart-toggle" class="btn precio-card mt-2">$7.500 <i
+                          class="fas fa-shopping-cart"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                <div class="card h-100 p-3 shadow border border-white rounded">
+                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/gclasica.png' %}" alt="Hclasica">
+                  <div class="card-body">
+                    <h4 class="card-title">Hamburguesa Clasica</h4>
+                    <p class="card-text">carne de res-cebolla-tomate-lechuga-salsa especial de la casa-queso cheddar</p>
+                    <div class="d-flex flex-column align-items-left">
+                      <label for="cart-toggle" class="btn precio-card mt-2">$7.500 <i
+                          class="fas fa-shopping-cart"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                <div class="card h-100 p-3 shadow border border-white rounded">
+                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/hpollo.png' %}" alt="hpollo">
+                  <div class="card-body">
+                    <h4 class="card-title">Hamburguesa Pollo</h4>
+                    <p class="card-text">pechuga de pollo marinada-especias y hierbas-lechuga-tomate-mayonesa</p>
+                    <div class="d-flex flex-column align-items-left">
+                      <label for="cart-toggle" class="btn precio-card mt-2">$7.500 <i
+                          class="fas fa-shopping-cart"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                <div class="card h-100 p-3 shadow border border-white rounded">
+                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/hpavo.png' %}" alt="hpavo">
+                  <div class="card-body">
+                    <h4 class="card-title">Hamburguesa Pavo</h4>
+                    <p class="card-text">carne de pavo-lechuga-tomate-salsa de yogur griego</p>
+                    <div class="d-flex flex-column align-items-left">
+                      <label for="cart-toggle" class="btn precio-card mt-2">$5.500 <i
+                          class="fas fa-shopping-cart"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                <div class="card h-100 p-3 shadow border border-white rounded">
+                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/hvegana.png' %}" alt="hvegana">
+                  <div class="card-body">
+                    <h4 class="card-title">Hamburguesa Vegana</h4>
+                    <p class="card-text">hamburguesa vegana(mezcla de garbanzos, remolacha y avena)-pan
+                      integral-lechuga-tomate-pepinillos</p>
+                    <div class="d-flex flex-column align-items-left">
+                      <label for="cart-toggle" class="btn precio-card mt-2">$6.500<i
+                          class="fas fa-shopping-cart"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--PIZZAS-->
+  <div class="tab-content">
+    <div id="pizzas" class="container tab-pane active"><br>
+      <div class="container">
+        <h3 class="titulos-cards">Pizzas</h3>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                <div class="card h-100 p-3 shadow border border-white rounded">
+                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/pepperoniPi.jpg' %}"alt="Pepperoni">
+                  <div class="card-body">
+                    <h4 class="card-title">Pizza Pepperoni</h4>
+                    <p class="card-text">Pepperoni, queso mozzarella, salsa de tomate</p>
+                    <div class="d-flex flex-column align-items-left">
+                      <label for="cart-toggle" class="btn precio-card mt-2">$9.990 <i
+                          class="fas fa-shopping-cart"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                <div class="card h-100 p-3 shadow border border-white rounded">
+                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/pizza.png' %}" alt="Pizzaveg">
+                  <div class="card-body">
+                    <h4 class="card-title">Pizza Vegetariana</h4>
+                    <p class="card-text">Pimientos, champiñones, cebollas, tomates, queso
+                      mozzarella</p>
+                    <div class="d-flex flex-column align-items-left">
+                      <label for="cart-toggle" class="btn precio-card mt-2">$10.500 <i
+                          class="fas fa-shopping-cart"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                <div class="card h-100 p-3 shadow border border-white rounded">
+                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/piña.png' %}" alt="Phawaian">
+                  <div class="card-body">
+                    <h4 class="card-title">Pizza Hawaiana</h4>
+                    <p class="card-text">Jamón, piña, queso mozzarella, salsa de tomate</p>
+                    <div class="d-flex flex-column align-items-left">
+                      <label for="cart-toggle" class="btn precio-card mt-2">$6.990 <i
+                          class="fas fa-shopping-cart"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                <div class="card h-100 p-3 shadow border border-white rounded">
+                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/italiana.jpg' %}" alt="Pizzaveg">
+                  <div class="card-body">
+                    <h4 class="card-title">Pizza italiana</h4>
+                    <p class="card-text">Tomate, queso mozzarella, hojas de albahaca</p>
+                    <div class="d-flex flex-column align-items-left">
+                      <label for="cart-toggle" class="btn precio-card mt-2">$9.500 <i
+                          class="fas fa-shopping-cart"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Papas fritas-->
+  <div class="tab-content">
+    <div id="papas" class="container tab-pane active"><br>
+      <h3 class="titulos-cards">Papas Fritas</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/caritas.jpg' %}" alt="caritas">
+                <div class="card-body">
+                  <h4 class="card-title">Papita smiley</h4>
+                  <p class="card-text">deliciosamente crujientes por fuera, con un interior blando que casi se
+                    deshace en la boca</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$3.500 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/salchipapa.webp' %}" alt="salchipapa">
+                <div class="card-body">
+                  <h4 class="card-title">Salchipapa</h4>
+                  <p class="card-text">Plato de papas y salchichas fritas, que se puede acompañar con mayonesa o
+                    salsa
+                    de tomate</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$3.500 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/tocino.jpg' %}" alt="tocino">
+                <div class="card-body">
+                  <h4 class="card-title">Papas fritas con queso y tocino</h4>
+                  <p class="card-text">Papas fritas con queso cheddar fundido, tocino crujiente y cebollín</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$5.000 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/rusticas.png' %}" alt="rusticas">
+                <div class="card-body">
+                  <h4 class="card-title">Papas fritas rusticas</h4>
+                  <p class="card-text">Papas fritas condimentadas con aceite, ajo, sal , pimienta , paprika, curry
+                    o
+                    perejil.</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$4.200 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--bebidas-->
+  <div class="tab-content">
+    <div id="bebidas" class="container tab-pane active"><br>
+      <h3 class="titulos-cards">Bebidas</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/rosa.png' %}" alt="cocarosalia">
+                <div class="card-body">
+                  <h4 class="card-title">Coca Cola Movement by Rosalía</h4>
+                  <p class="card-text">Coca-Cola con una "explosión de notas refrescantes de frambuesa y sabores
+                    especiados".</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$1.500 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/sprite.png' %}" alt="sprite">
+                <div class="card-body">
+                  <h4 class="card-title">Sprite</h4>
+                  <p class="card-text">Lata Sprite 350 ML</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$1.500 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/cocaaa.png' %}" alt="coca">
+                <div class="card-body">
+                  <h4 class="card-title">Coca-Cola</h4>
+                  <p class="card-text">Lata Coca-Cola 350 ML</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$1.500 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/fanta.jpg' %}" alt="fanta">
+                <div class="card-body">
+                  <h4 class="card-title">Fanta</h4>
+                  <p class="card-text">Lata Fanta 350 ML</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$1.500 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="card h-100 p-3 shadow border border-white rounded">
+                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/latapepsi2.webp' %}" alt="pepsi">
+                <div class="card-body">
+                  <h4 class="card-title">Pepsi</h4>
+                  <p class="card-text">Lata Pepsi 350 ML</p>
+                  <div class="d-flex flex-column align-items-left">
+                    <label for="cart-toggle" class="btn precio-card mt-2">$1.500 <i
+                        class="fas fa-shopping-cart"></i></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <div class="servicios">
+          <div class="servicio">
+            <i class="fas fa-carrot"></i>
+            <h2>COMIDA FRESCA</h2>
+            <p>Usamos solo los mejores ingredientes para cocinar la comida fresca y sabrosa para ti.</p>
+          </div>
+          <div class="servicio">
+            <i class="fas fa-user-tie"></i>
+            <h2>CHEFS EXPERIMENTADOS</h2>
+            <p>Nuestro personal consiste en chefs y cocineros con años de experiencia.</p>
+          </div>
+          <div class="servicio">
+            <i class="fas fa-utensils"></i>
+            <h2>VARIEDAD DE PLATOS</h2>
+            <p>En nuestro menú encontrarás una amplia variedad de platos, y bebidas.</p>
+          </div>
+        </div>
+        <div class="container mt-4">
+          <div class="row align-items-center">
+            <div class="col-md-6 col-sm-12">
+              <img src="{% static 'aplicacion/img/Htransparente.png' %}" alt="Descripción de la imagen" class="img-fluid" />
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <h1>Quiénes Somos</h1>
+              <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum."</p>
+              <h4>LostBurger</h4>
+            </div>
+          </div>
+        </div>
+        <p></p>
+{% endblock contenido %}

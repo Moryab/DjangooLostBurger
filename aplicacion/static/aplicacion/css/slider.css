@@ -1,0 +1,22 @@
+/* Estilo personalizado para el carrusel y las imágenes */
+#demo.carousel {
+    margin: auto; /* Centrar el carrusel */
+}
+
+#demo.carousel .carousel-item img {
+    max-height: 500px;
+    object-fit: cover; /* Cubrir el área del contenedor manteniendo la proporción de aspecto */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    #demo.carousel .carousel-item img {
+        max-height: 300px; /* Ajustar la altura máxima para pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 576px) {
+    #demo.carousel .carousel-item img {
+        max-height: 200px; /* Ajustar la altura máxima para pantallas aún más pequeñas */
+    }
+}

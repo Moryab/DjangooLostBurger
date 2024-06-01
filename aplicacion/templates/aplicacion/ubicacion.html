@@ -1,0 +1,37 @@
+{% extends "aplicacion/base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+  <div class="row">
+    <div class="container-fluid horarios-retiro">
+      <div class="row">
+        <!-- Contenido principal -->
+        <div class="col-md-6">
+          <h1>Horario</h1>
+          <h4>Retiro en Local</h4>
+          <ul>
+            <li><strong>Lun:</strong> 11:30 - 00:00</li>
+            <li><strong>Mar:</strong> 11:30 - 00:00</li>
+            <li><strong>Mie:</strong> 11:30 - 00:00</li>
+            <li><strong>Jue:</strong> 11:30 - 00:00</li>
+            <li><strong>Vie:</strong> 11:30 - 01:00</li>
+            <li><strong>Sab:</strong> 11:30 - 01:00</li>
+            <li><strong>Dom:</strong> 11:30 - 00:00</li>
+          </ul>
+          <p>Teléfono: +56 9 80234234</p>
+        </div>
+      </div>
+    </div>
+    <!-- Mapa a la derecha -->
+    <div class="col-md-6 col-xs-12">
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3194.901137754748!2d-73.06499332435494!3d-36.796920672248035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b5a048bfdd29%3A0xe0244be2c6543a30!2zQXYuIER1b2NVQywgQ29uY2VwY2nDs24sIELDrW8gQsOtbw!5e0!3m2!1ses!2scl!4v1712461082734!5m2!1ses!2scl"
+          width="1000" height="800" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+  <p></p>
+{% endblock contenido %}

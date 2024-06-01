@@ -1,0 +1,64 @@
+{% extends "aplicacion/baseadmin.html" %}
+{% load static %}
+
+{% block contenidoadmin %}
+
+  <link rel="stylesheet" href="{% static 'aplicacion/css/admbtn.css' %}">
+  <link rel="stylesheet" href="{% static 'aplicacion/css/editartabla.css' %}">
+  <!-- Formulario añadir -->
+  <div class="edit-form-container">
+    <div class="form-header">
+        <a href="{% url 'admpagregar' %}" class="back-arrow"><i class="fas fa-arrow-left"></i></a>
+        <h2>Añadir Producto</h2>
+    </div>
+    <form action="addproduc.html" method="get" enctype="multipart/form-data" class="was-validated">
+        
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required oninput="validarNombre()">
+            <div id="error-nombre" class="invalid-feedback">Rellene el campo solo con texto.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required oninput="validarDescripcion()"></textarea>
+            <div id="error-descripcion" class="invalid-feedback">Rellene el campo solo con texto</div>
+        </div>
+
+        <div class="form-group">
+          <label for="precio">Precio:</label>
+          <input type="text" id="precio" name="precio" required oninput="validarPrecio()">
+          <div id="error-precio" class="invalid-feedback">Ingrese un valor numerico.</div>
+        </div>
+        
+
+        <div class="form-group">
+          <label for="categoria">Categoría:</label>
+          <select id="categoria" name="categoria" required onchange="validarCategoria()">
+              <option value=""selected>Sin Seleccionar</option>
+              <option value="Completos">Completos</option>
+              <option value="Hamburguesas">Hamburguesas</option>
+              <option value="Pizzas">Pizzas</option>
+              <option value="Papas Fritas">Papas Fritas</option>
+              <option value="Bebidas">Bebidas</option>
+          </select>
+          <div id="error-categoria" class="invalid-feedback">Seleccione una Categoria.</div>
+      </div>
+      
+
+        <div class="form-group">
+          <label for="imagen">Imagen del Producto:</label>
+          <input type="file" id="imagen" name="imagen" accept="image/*" required onchange="validarImagen()">
+          <div class="invalid-feedback">Seleccione una imagen antes de enviar.</div>
+      </div>
+
+        <div class="form-actions">
+            <button type="submit" formaction="admpagregar.html">Añadir Producto</button>
+        </div>
+    </form>
+</div>
+  <script src="{% static 'aplicacion/js/scripts.js' %}"></script>
+
+{% endblock contenidoadmin %}
+
+

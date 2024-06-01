@@ -1,0 +1,46 @@
+{% extends "aplicacion/base.html" %}
+{% load static %}
+
+{% block contenido %}
+  <!--==================== LOGIN ====================-->
+  <div class="login" id="login">
+    <form action="" class="login__form">
+      <div class="back-to-previous">
+        <a href="{% url "login" %}" class="login__back"><i class="fas fa-arrow-left"></i></a>
+      </div>
+    <form action="" class="login__form">
+      <h2 class="login__title">Registrarse</h2>
+
+      <div class="login__group">
+        <div>
+            <label for="text" class="login__label">Nombre</label>
+            <input type="text" placeholder="Escriba su nombre Aqui" id="nombre" class="login__input"required oninput="validarNombre()">
+        </div>
+
+        <div>
+          <label for="email" class="login__label">Correo</label>
+          <input type="email" placeholder="Escriba su Correo Aqui" id="email" class="login__input"required oninput="validarEmail()">
+        </div>
+
+        <div>
+          <label for="password" class="login__label">Contraseña</label>
+          <input type="password" placeholder="Escriba su Contraseña Aqui" id="password" class="login__input"required oninput="validarContrasena()">
+         <span style="color: red;" id="errorpass"></span>
+        </div>
+      </div>
+    
+      <div>
+        <button type="submit" class="login__button" formaction="index.html">Registrar</button>
+      </div>
+    </form>
+
+    <i class="ri-close-line login__close" id="login-close"></i>
+  </div>
+  <!--==================== MAIN ====================-->
+  <main class="main">
+    <img src="{% static 'aplicacion/img/fondo6.png' %}" alt="Fondo" class="main__bg">
+  </main>
+
+
+  <script src="{% static 'aplicacion/js/scripts.js' %}"></script>
+{% endblock contenido %}

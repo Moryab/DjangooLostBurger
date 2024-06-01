@@ -1,0 +1,66 @@
+.navbar {
+    background-color: #B0BEC5;
+}
+
+.widget-card {
+    color: rgb(0, 0, 0);
+    display: flex;
+    
+}
+
+.widget-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    /* Aplicar el mismo color a los íconos */
+    color: inherit;
+    
+}
+
+.card-title-admin,
+.card-text-admin {
+    margin: 0;
+    text-align: right;
+}
+
+/* Colores para las barras de progreso */
+.progress {
+    height: 10px;
+}
+.progress-bar-mensajes {
+    background-color: #28a745; 
+    width: 40%;
+}
+
+.progress-bar-ingresos {
+    background-color: #dc3545; 
+    width: 40%
+}
+
+.progress-bar-clientes {
+    background-color: #7333c2;
+    width: 60%
+    
+}
+
+.progress-bar-pedidos {
+    background-color: #007bff; 
+    width: 30%;
+}
+
+/* Aplicar el color a los íconos */
+.widget-icon.fa-envelope {
+    color: #28a745; /* Verde */
+}
+
+.widget-icon.fa-dollar-sign {
+    color: #dc3545; /* Rojo */
+}
+
+.widget-icon.fa-users {
+    color: #7333c2; /* Amarillo */
+}
+
+.widget-icon.fa-shopping-cart {
+    color: #007bff; /* Azul */
+}

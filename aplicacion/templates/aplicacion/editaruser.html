@@ -1,0 +1,70 @@
+{% extends "aplicacion/baseadmin.html" %}
+{% load static %}
+
+{% block contenidoadmin %}
+
+
+    <!--fORMULARIO-->
+    <link rel="stylesheet" href="{% static 'aplicacion/css/editartabla.css' %}">
+
+    <div class="edit-form-container">
+        <div class="form-header">
+            <a href="{% url 'admusuarios' %}" class="back-arrow"><i class="fas fa-arrow-left"></i></a>
+            <h2>Editar Usuario</h2>
+        </div>
+        <form action="editaruser.html" method="get" class="was-validated">
+            <input type="hidden" id="userId" name="userId" value="" required oninput="cargarDatosUsuario()">
+            <div class="form-group">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required oninput="validarNombre()">
+                <div id="error-nombre" class="invalid-feedback">Rellene el campo antes de enviar. Solo se permiten
+                    letras.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="apellido" class="form-label">Apellido:</label>
+                <input type="text" class="form-control" id="apellido" name="apellido" required
+                    oninput="validarApellido()">
+                <div id="error-apellido" class="invalid-feedback">Rellene el campo antes de enviar. Solo se permiten
+                    letras.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required oninput="validarEmail()">
+                <div class="invalid-feedback">Rellene el campo antes de enviar.</div>
+            </div>
+            <div class="form-group">
+                <label for="telefono" class="form-label">Teléfono:</label>
+                <div class="input-group">
+                    <select class="form-select" id="prefijo" name="prefijo" required onchange="validarPrefijo()">
+                        <option value=""selected>Sin Seleccionar</option>
+                        <option value="+56">+56 Chile</option>
+                        <option value="+34">+34 España</option>
+                        <option value="+52">+52 México</option>
+                        <option value="+54">+54 Argentina</option>
+                        <option value="+1">+1 EE.UU.</option>
+                        <!-- Agrega más prefijos según sea necesario -->
+                    </select>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" required oninput="validarTelefono()">
+                        <div id="error-telefono" id="error-prefijo" class="invalid-feedback">Seleccione opcion antes de enviar. Solo se permiten números.</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="direccion" class="form-label">Dirección:</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" required
+                    oninput="validarDireccion()">
+                <div id="error-direccion" class="invalid-feedback">Rellene el campo antes de enviar.</div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" formaction="admusuarios.html">Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="{% static 'aplicacion/js/scripts.js' %}"></script>
+    <script src="{% static 'aplicacion/js/telefonoval.js' %}"></script>
+
+
+{% endblock contenidoadmin %}
