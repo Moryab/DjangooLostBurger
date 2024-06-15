@@ -11,6 +11,9 @@ Function views
 from django.urls import path, include
 from .views import index, nosotros, ubicacion, pedidos, login, contacto, registrar, recuperar, pago, admburger, admpedidos,admpagregar, ver, addproduc, admlista, editarprod,admusuarios, editaruser, usuarios
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     #URLS DE APLICACION
     path('',index,name='index'),
@@ -33,14 +36,7 @@ urlpatterns = [
     path('editaruser/',editaruser, name='editaruser'),
     path('usuarios/',usuarios, name='usuarios'),
 
-
-
-
-
- 
-
-
-
-
-
 ]
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
