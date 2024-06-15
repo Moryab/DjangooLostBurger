@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
@@ -12,3 +13,23 @@ class usuario(models.Model):
 
     def __str__(self):
         return f"{self.id} - {self.nombre} {self.apellido}"
+    
+# Tipo de producto.
+CATEGORIAS = [
+    ('Completos', 'Completos'),
+    ('Hamburguesas', 'Hamburguesas'),
+    ('Pizzas', 'Pizzas'),
+    ('Papas Fritas', 'Papas Fritas'),
+    ('Bebidas', 'Bebidas'),
+]
+
+class Producto(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100,null=False)
+    descripcion = models.TextField(max_length=300,null=False)
+    precio =  models.IntegerField(validators=[MinValueValidator(0)],null=False)
+    categoria = models.CharField(max_length=50, choices=CATEGORIAS, default='Sin Seleccionar',null=False)
+    imagen = models.ImageField(upload_to='productos/',null=False)
+
+    def __str__(self):
+        return str(self.id)

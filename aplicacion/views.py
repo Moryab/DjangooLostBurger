@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from django.shortcuts import get_object_or_404, redirect
+from .models import Producto
 # Create your views here.
 def index(request):
     return render(request,'aplicacion/index.html')
@@ -44,7 +45,12 @@ def ver(request):
     return render(request,'aplicacion/ver.html')
 
 def admlista(request):
-    return render(request,'aplicacion/admlista.html')
+    
+    admlista=Producto.objects.all()
+    datos={
+        "admlista":admlista
+    }
+    return render(request,'aplicacion/admlista.html',datos)
 
 def editarprod(request):
     return render(request,'aplicacion/editarprod.html')

@@ -3,7 +3,8 @@
 
 {% block contenido %}
 <link rel="stylesheet" href="{% static 'aplicacion/css/slider.css' %}">
-<link rel="stylesheet" href="{% static 'aplicacion/css/titulo.css' %}">
+<link rel="stylesheet" href="{% static 'aplicacion/css/titulocard.css' %}">
+<link rel="stylesheet" href="{% static 'aplicacion/css/btnsmenu.css' %}">
 
   <!--Imagenes-->
     <!-- Carousel -->
@@ -44,34 +45,44 @@
       </button>
     </div>
 
-  <!-- Nav pills -->
-  <ul class="nav nav-pills">
-    <li class="nav-item mustard-bg">
-      <a class="nav-link active" href="#completos">
-        <i class="fas fa-hotdog"></i> Completos
-      </a>
-    </li>
-    <li class="nav-item mustard-bg">
-      <a class="nav-link active" href="#hamburguesas">
-        <i class="fas fa-hamburger"></i> Hamburguesas
-      </a>
-    </li>
-    <li class="nav-item mustard-bg">
-      <a class="nav-link active" href="#pizzas">
-        <i class="fas fa-pizza-slice"></i> Pizzas
-      </a>
-    </li>
-    <li class="nav-item mustard-bg">
-      <a class="nav-link active" href="#papas">
-        <i class="fas fa-utensils"></i> Papas Fritas
-      </a>
-    </li>
-    <li class="nav-item mustard-bg">
-      <a class="nav-link active" href="#bebidas">
-        <i class="fas fa-glass-whiskey"></i> Bebidas
-      </a>
-    </li>
-  </ul>
+<!-- MENU Y Botones -->
+<div class="titulo-menu">
+  <h1 class="titulo-principal">TUS FAVORITOS</h1>
+  <h2 class="subtitulo-menu">Nuestras <span class="texto-destacado">Deliciosas Categorías</span></h2>
+  <div class="subrayado"></div>
+</div>
+<div class="contenedor-menu">
+  <a href="#completos">
+      <button class="boton-categoria-especial">
+          <img src="{% static 'aplicacion/img/completito.jpg' %}" alt="Completos">
+          <span>Completos</span>
+      </button>
+  </a>
+  <a href="#hamburguesas">
+      <button class="boton-categoria-especial">
+          <img src="{% static 'aplicacion/img/gclasica.png' %}" alt="Hamburguesas">
+          <span>Hamburguesas</span>
+      </button>
+  </a>
+  <a href="#pizzas">
+      <button class="boton-categoria-especial">
+          <img src="{% static 'aplicacion/img/Fpizza.png' %}" alt="Pizzas">
+          <span>Pizzas</span>
+      </button>
+  </a>
+  <a href="#papas">
+      <button class="boton-categoria-especial">
+          <img src="{% static 'aplicacion/img/papitas.jpeg' %}" alt="Papas">
+          <span>Papas Fritas</span>
+      </button>
+  </a>
+  <a href="#bebidas">
+      <button class="boton-categoria-especial">
+          <img src="{% static 'aplicacion/img/coquita.jpg' %}" alt="Bebidas">
+          <span>Bebidas</span>
+      </button>
+  </a>
+</div>
 
 
  <!-- TARJETAS-->

@@ -1,6 +1,6 @@
 {% extends "aplicacion/baseadmin.html" %}
 {% load static %}
-
+{% comment %} 'id','nombre','descripcion','precio','categoria','imagen' {% endcomment %}
 {% block contenidoadmin %}
 
     <link rel="stylesheet" href="{% static 'aplicacion/css/admbtn.css' %}">
@@ -24,11 +24,12 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Hamburguesa de Pavo</td>
-                            <td><img src="{% static 'aplicacion/img/hpavo.png' %}" alt="Hamburguesa de Pavo" height="50"></td>
-                            <td>carne de pavo, lechuga, tomate, salsa de yogur griego</td>
-                            <td>$5.500</td>
+                            {% for p in admlista %}
+                            <td>{{p.id}}</td>
+                            <td>{{p.nombre}}</td>
+                            <td><img src="{{p.imagen}}" alt="Foto Producto" height="50"></td>
+                            <td>{{p.descripcion}}</td>
+                            <td>{{p.precio}}</td>
                             <td>
                                 <a class="btn btn-sm btn-editar" href="{% url 'editarprod' %}">
                                     <i class="fas fa-edit"></i>
@@ -38,39 +39,7 @@
                                 </a>                              
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Hamburguesa BBQ</td>
-                            <td><img src="{% static 'aplicacion/img/hbbq.png' %}" alt="Hamburguesa BBQ" height="50"></td>
-                            <td>carne de res, BBQ, aros de cebolla, tocino, queso cheddar</td>
-                            <td>$7.500</td>
-                            <td>
-                                <a class="btn btn-sm btn-editar" href="{% url 'editarprod' %}">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a class="btn btn-sm btn-borrar btn-confirmar" href="">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Hamburguesa Vegana</td>
-                            <td><img src="{% static 'aplicacion/img/hvegana.png' %}" alt="Hamburguesa Vegana" height="50"></td>
-                            <td>hamburguesa vegana (mezcla de garbanzos, remolacha y avena), pan integral, lechuga,
-                                tomate,
-                                pepinillos
-                            </td>
-                            <td>$6.500</td>
-                            <td>
-                                <a class="btn btn-sm btn-editar" href="{% url 'editarprod' %}">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a class="btn btn-sm btn-borrar btn-confirmar" href="">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
                 <ul class="pagination text-center">

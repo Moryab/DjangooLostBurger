@@ -1,0 +1,98 @@
+/*Titulo menu*/
+.titulo-menu {
+    margin-top: 20px;
+    text-align: left;
+    margin-bottom: 30px;
+  }
+  
+  .titulo-principal {
+    font-size: 1.2em;
+    color: orange;
+    margin: 0;
+  }
+  
+  .titulo-principal::before {
+    content: ''; /* Crea un pseudo-elemento para la línea */
+    display: inline-block;
+    width: 20px; /* Ancho de la línea */
+    height: 2px; /* Altura de la línea */
+    background-color: orange; /* Color de la línea */
+    margin-right: 10px; /* Espacio entre la línea y el texto */
+    vertical-align: middle; /* Alinea verticalmente la línea con el texto */
+  }
+  
+  
+  .subtitulo-menu {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+  }
+  
+  .texto-destacado {
+    color: orange;
+    position: relative; /* Posiciona el span relativamente para el pseudo-elemento */
+  }
+  
+  .texto-destacado::after {
+    content: ''; /* Crea un pseudo-elemento para el subrayado */
+    display: block;
+    width: 100%; /* El ancho del subrayado será el mismo que el del texto */
+    height: 3px; /* Altura del subrayado */
+    background-color: orange; /* Color del subrayado */
+    position: absolute; /* Posiciona absolutamente el pseudo-elemento */
+    left: 0;
+    bottom: -5px; /* Ajusta la posición debajo del texto */
+    border-radius: 5px; /* Bordes redondeados para el subrayado */
+  }
+  
+  /* botones menu */
+  .contenedor-menu {
+    background-color: rgb(255, 255, 255);
+    text-align: center; /* Centra el texto y cualquier elemento en línea dentro del contenedor */
+    margin: auto; /* Centra el contenedor si tiene un ancho definido */
+    position: sticky;/* Fija la posición de la barra de navegación */
+    top: 0;/* Coloca la barra en la parte superior de la página */
+    width: 100%;/* Ancho completo*/
+    z-index: 999;/* Asegura que la barra esté sobre otros elementos*/
+    padding: 10px 0; /* Agrega un espacio alrededor del contenido */
+    margin-top: 20px;
+  }
+  
+  .botones {
+    display: flex;
+    justify-content: center; /* Centra los elementos flexibles horizontalmente */
+    flex-wrap: wrap; /* Permite que los botones se ajusten en filas según el ancho del contenedor */
+  }
+  
+  .boton-categoria-especial {
+    border: none;
+    border-radius: 50%;
+    width: 100px; /* Ancho del botón */
+    height: 100px; /* Alto del botón, igual al ancho para un círculo perfecto */
+    margin: 10px; /* Añade un margen alrededor de los botones para espaciarlos */
+    position: relative;
+    padding: 0;
+    background: none;
+    overflow: hidden; /* Asegura que nada se desborde del círculo */
+    overflow: visible; /* Permite que el contenido se muestre fuera del botón */
+  }
+  .boton-categoria-especial img {
+    width: 100%; /* Hace que la imagen llene el botón */
+    height: 100%; /* Ajusta la altura para que sea igual al ancho */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    border-radius: 50%; /* Mantiene la forma circular */
+    z-index: 1; /* Establece el z-index de la imagen para que el texto pueda aparecer encima */
+  }
+  .boton-categoria-especial span {
+    display: block;
+    text-align: center;
+    width: 100%;
+    bottom: -30px;
+    left: 0;
+    z-index: 2; /* Asegura que el texto tenga un z-index más alto que la imagen */
+    font-size: 0.9em; /* Ajusta el tamaño de la fuente a un valor más pequeño */
+  }
+
+  
+  
