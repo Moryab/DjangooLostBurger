@@ -31,10 +31,10 @@
                             <td>{{p.descripcion}}</td>
                             <td>{{p.precio}}</td>
                             <td>
-                                <a class="btn btn-sm btn-editar" href="{% url 'editarprod' %}">
+                                <a class="btn btn-sm btn-editar" href="{% url 'editarprod' p.id %}" role="button">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a class="btn btn-sm btn-borrar btn-confirmar" href="">
+                                <a class="btn btn-sm btn-borrar btn-confirmar" href="" role="button" >
                                     <i class="fas fa-trash"></i>
                                 </a>                              
                             </td>
