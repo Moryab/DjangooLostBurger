@@ -34,25 +34,28 @@
                                 <a class="btn btn-sm btn-editar" href="{% url 'editarprod' p.id %}" role="button">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a class="btn btn-sm btn-borrar btn-confirmar" href="" role="button" >
-                                    <i class="fas fa-trash"></i>
-                                </a>                              
+                                <form method="post" action="{% url 'eliminar_producto' p.id %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-borrar btn-confirmar">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>                                                            
                             </td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
-                <ul class="pagination text-center">
+{% comment %}   <ul class="pagination text-center">
                     <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                     <li class="page-item active"><a class="page-link" href="#">2</a></li>
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
                     <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-                </ul>
+                </ul> {% endcomment %}
             </div>
         </div><!--main container ends-->
     </div>
 
-    <script src="{% static 'aplicacion/js/confirmacion.js' %}"></script>
+    <script src="{% static 'aplicacion/js/delete.js' %}"></script>
 
 {% endblock contenidoadmin %}

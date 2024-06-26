@@ -25,11 +25,10 @@ CATEGORIAS = [
 
 class Producto(models.Model):
     id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=25,null=False, 
+    nombre = models.CharField(max_length=40,null=False, 
     validators=[RegexValidator(r'^[a-zA-Z ]*$', 'Ingrese solo letras y espacios.')])
     
-    descripcion = models.TextField(max_length=300,null=False, 
-    validators=[RegexValidator(r'^[a-zA-Z0-9,.!? ]*$', 'Ingrese solo letras, números y caracteres especiales.')])
+    descripcion = models.TextField(max_length=300,null=False)
     
     precio =  models.IntegerField(validators=[MinValueValidator(0)],null=False)
     categoria = models.CharField(max_length=50, choices=CATEGORIAS, default='Sin Seleccionar',null=False)

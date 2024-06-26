@@ -61,9 +61,6 @@ function validarDescripcion() {
       return;
   }
   
-  // Remover caracteres no alfabéticos y no espacios en blanco
-  var newValue = valor.replace(/[^A-Za-z\s]/g, '');
-  
   // Verificar si el valor ingresado contiene caracteres no alfabéticos
   if (valor !== newValue) {
       input.value = newValue;

@@ -140,6 +140,13 @@ def editarprod(request, id):
     }
     return render(request, 'aplicacion/editarprod.html', datos)
 
+def eliminar_producto(request, id):
+    producto = get_object_or_404(Producto, id=id)
+    if request.method == 'POST':
+        producto.delete()
+    return redirect('admlista')
+      
+
 def admusuarios(request):
     return render(request,'aplicacion/admusuarios.html')
 
