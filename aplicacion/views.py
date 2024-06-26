@@ -14,6 +14,9 @@ def ubicacion(request):
 def pedidos(request):
     return render(request,'aplicacion/pedidos.html')
 
+def detallecli(request):
+    return render(request,'aplicacion/detallecli.html')
+
 def login(request):
     return render(request,'aplicacion/login.html')
 
