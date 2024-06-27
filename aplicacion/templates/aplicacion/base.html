@@ -10,9 +10,43 @@
   <link rel="stylesheet" href="{% static 'aplicacion/css/styles.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link rel="icon" type="image/png" href="{% static 'aplicacion/img/Logo.png' %}">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
+  {% if messages %}
+
+    {% for message in messages %}
+  
+      {% if message.level == 25 %}
+        <script>
+          //alerta de exito
+          Swal.fire({
+            title: 'Éxito!!!',
+            text: '{{ message }}',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+        </script>
+      {% endif %}
+  
+          {% if message.level == 30 %}
+            <script>
+              //alerta de advertencia
+              Swal.fire({
+                title: 'Éxito!!! ',
+                text: '{{ message }}',
+                icon: 'warning',
+                confirmButtonText: 'Ok'
+              })
+            </script>
+          {% endif %}
+    {% endfor %}
+  
+{% endif %}
+
+
      <!-- Titulo Pag -->
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
@@ -35,14 +69,35 @@
           <li class="nav-item">
             <a class="nav-link btn-light" href="{% url "pedidos" %}">Pedidos</a>
           </li>
+          {% if perms.aplicacion.add_permission %}
+          <li class="nav-item">
+            <a class="nav-link btn-light" href="{% url "admburger" %}">Administrar</a>
+          </li>
+          {% endif %}
         </ul>
 
         <ul class="navbar-nav ms-auto">
+          {% if user.is_authenticated %}
           <li class="nav-item text-light">
+            
+            <li>
+              <a href="#"class="fas fa-user btn">{{user.username}}</a>
+            </li>
+
+            <li>
+              <a href="{% url 'salir' %}"class="btn">
+              <i class="fas fa-user"></i> Cerrar</a>
+            </li>
+
+          {% else %}
+
+          <li>
             <a href="{% url "login" %}"class="btn">
-              <i class="fas fa-user"></i> Ingresa
-            </a>
+              <i class="fas fa-user"></i> Ingresa</a>
           </li>
+
+          </li>
+          {% endif %}
         </ul>
       </div>
       <!--Icono de Boton de carrito-->

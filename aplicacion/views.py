@@ -1,6 +1,9 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Producto
-from .forms import ProductoForm
+from .forms import ProductoForm, UserForm
+from django.contrib import messages
+from django.contrib.auth import logout
+
 # Create your views here.
 def index(request):
     return render(request,'aplicacion/index.html')
@@ -18,13 +21,30 @@ def detallecli(request):
     return render(request,'aplicacion/detallecli.html')
 
 def login(request):
-    return render(request,'aplicacion/login.html')
+    return render(request,'registration/login.html')
 
 def contacto(request):
     return render(request,'aplicacion/contacto.html')
 
 def registrar(request):
-    return render(request,'aplicacion/registrar.html')
+    
+    form=UserForm()
+    
+    if request.method=="POST":
+        form=UserForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Se ha Registrado con Exito!")
+            return redirect(to="login")
+    
+    datos={
+        "form":form
+    }
+    return render(request, 'registration/registrar.html',datos)
+
+def salir(request):
+    logout(request)
+    return redirect(to='index')
 
 def recuperar(request):
     return render(request,'aplicacion/recuperar.html')
@@ -74,6 +94,8 @@ def addproduc(request):
         )
         nuevo_producto.save()
         
+        messages.set_level(request,messages.SUCCESS)
+        messages.success(request, "Producto creado con exito!!!")
         return redirect('admlista')  # Redirigir a la lista de productos
     
     return render(request, 'aplicacion/addproduc.html')
@@ -128,7 +150,8 @@ def editarprod(request, id):
         if imagen:
             producto.imagen = imagen
         producto.save()
-
+        messages.set_level(request,messages.WARNING)
+        messages.warning(request,"Producto modificado")
         return redirect('admlista')  # Redirigir a la lista de productos
 
 
@@ -144,6 +167,8 @@ def eliminar_producto(request, id):
     producto = get_object_or_404(Producto, id=id)
     if request.method == 'POST':
         producto.delete()
+        messages.set_level(request,messages.WARNING)
+        messages.warning(request,"Producto Eliminado")
     return redirect('admlista')
       
 
@@ -154,5 +179,6 @@ def editaruser(request):
     return render(request,'aplicacion/editaruser.html')
 
 def usuarios(request):
-    return render(request,'aplicacion/usuarios.html')
+    
+    return render(request,'registration/usuarios.html')
 

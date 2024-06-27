@@ -1,19 +1,16 @@
 from django.db import models
 from django.core.validators import MinValueValidator, RegexValidator
+from django.contrib.auth.models import User
 
 
 # Create your models here.
-class usuario(models.Model):
-    id = models.CharField(max_length=8, primary_key=True, unique=True)
-    nombre = models.CharField(max_length=50, null=False)
-    apellido = models.CharField(max_length=50, null=False)
-    email = models.EmailField(max_length=100, null=False)
+class Perfil(models.Model):
+    usuario=models.ForeignKey(User,on_delete=models.CASCADE)
     telefono = models.CharField(max_length=9, null=False)
     direccion = models.CharField(max_length=255, null=False)
 
     def __str__(self):
-        return f"{self.id} - {self.nombre} {self.apellido}"
-    
+        return str(self.usuario)
 # Tipo de producto.
 CATEGORIAS = [
     ('Completos', 'Completos'),

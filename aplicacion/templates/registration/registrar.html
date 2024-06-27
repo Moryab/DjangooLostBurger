@@ -1,0 +1,36 @@
+{% extends "aplicacion/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block contenido %}
+<link rel="stylesheet" href="{% static 'aplicacion/css/login.css' %}">
+  <!--==================== LOGIN ====================-->
+  <div class="login-registrar">
+    <form action="" method="post" enctype="multipart/form-data" class="login__form">
+      {% csrf_token %}
+      
+      <div class="back-to-previous">
+        <a href="{% url 'index' %}" class="login__back"><i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <h2 class="login__title">Registrar Usuario</h2>
+
+      {{form | crispy}}
+      <p class="login__signup">
+        Tienes Cuenta? <a href="{% url 'login' %}">Iniciar Session</a>
+      </p>
+
+      <input type="submit" value="Registrar" class="btn">
+
+    </form>
+  </div>
+
+  <!--==================== MAIN ====================-->
+  <main class="main">
+    <img src="{% static 'aplicacion/img/fondo6.png' %}" alt="Fondo" class="main__bg">
+  </main>
+
+
+
+{% endblock contenido %}

@@ -11,7 +11,8 @@
         <a href="{% url 'admusuarios' %}" class="back-arrow"><i class="fas fa-arrow-left"></i></a>
         <h2>Registrar Usuarios</h2>
     </div>
-    <form action="editaruser.html" method="get" class="was-validated">
+    <form action="" method="post" enctype="multipart/form-data"  class="was-validated">
+        {% csrf_token %}
         <input type="hidden" id="userId" name="userId" value="" required oninput="cargarDatosUsuario()">
         <div class="form-group">
             <label for="nombre" class="form-label">Nombre:</label>
