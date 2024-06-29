@@ -6,7 +6,8 @@ from django.contrib.auth import logout
 
 # Create your views here.
 def index(request):
-    return render(request,'aplicacion/index.html')
+    productos = Producto.objects.all()
+    return render(request, 'aplicacion/index.html', {'productos': productos})
 
 def nosotros(request):
     return render(request,'aplicacion/nosotros.html')

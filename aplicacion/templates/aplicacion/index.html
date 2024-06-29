@@ -86,73 +86,37 @@
 
 
  <!-- TARJETAS-->
-<div class="tab-content">
+ <div class="tab-content">
   <!--COMPLETOS-->
   <div id="completos" class="container tab-pane active"><br>
-    <div class="container">
-      <h3 class="titulos-cards">Completos</h3>
-      <div class="row">
-        <div class="col-md-12">
-          <!-- Esta columna ocupa el ancho completo de la página en dispositivos medianos y grandes -->
+      <div class="container">
+          <h3 class="titulos-cards">Completos</h3>
           <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <!-- Las tarjetas se muestran en cuatro columnas en todos los dispositivos -->
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/citaliano.png' %}" alt="citaliano">
-                <div class="card-body">
-                  <h4 class="card-title">Completo Italiano</h4>
-                  <p class="card-text">Tomate-Palta-Mayo.</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$2.500 <i
-                        class="fas fa-shopping-cart"></i></label>
+              <div class="col-md-12">
+                  <div class="row">
+                      {% for producto in productos %}
+                          {% if producto.categoria == 'Completos' %}
+                              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                                  <div class="card h-100 p-3 shadow border border-white rounded">
+                                      <img class="card-img-top img-fluid" src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                                      <div class="card-body">
+                                          <h4 class="card-title">{{ producto.nombre }}</h4>
+                                          <p class="card-text">{{ producto.descripcion }}</p>
+                                              {% csrf_token %}
+                                              <div class="d-flex flex-column align-items-left">
+                                                  <button type="submit" class="btn precio-card mt-2">${{ producto.precio }} <i class="fas fa-shopping-cart"></i></button>
+                                              </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          {% endif %}
+                      {% endfor %}
                   </div>
-                </div>
               </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/golosos.png' %}" alt="guacamole">
-                <div class="card-body">
-                  <h4 class="card-title">El goloso</h4>
-                  <p class="card-text">Chucrut-Palta-Morrón o tomate-cebolla picados-Mayonesa.</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$3.500 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/aleman1.png' %}" alt="Chucrut">
-                <div class="card-body">
-                  <h4 class="card-title">Completo Aleman</h4>
-                  <p class="card-text">Tomate-Chucrut.</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$3.000 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/asss.webp' %}" alt="Hass">
-                <div class="card-body">
-                  <h4 class="card-title">Completo Hass</h4>
-                  <p class="card-text"> Carne de churrasco, palta, tomate, mayonesa y queso.</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$3.790 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
       </div>
-    </div>
   </div>
+</div>
   <!-- hamburguesas -->
   <div class="tab-content">
     <div id="hamburguesas" class="container tab-pane active"><br>
