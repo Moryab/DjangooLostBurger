@@ -9,7 +9,7 @@ Function views
     2. Add a URL to urlpatterns:  path('', views.home, name='home')
 """
 from django.urls import path, include
-from .views import index, nosotros, ubicacion, pedidos, login, contacto, registrar, recuperar, pago, admburger, admpedidos,admpagregar, ver, addproduc, admlista, editarprod,admusuarios, editaruser, usuarios, detallecli, eliminar_producto, salir
+from .views import index, agregar_producto, eliminar_producto, restar_producto, limpiar_carrito,  nosotros, ubicacion, pedidos, login, contacto, registrar, recuperar, pago, admburger, admpedidos,admpagregar, ver, addproduc, admlista, editarprod,admusuarios, editaruser, usuarios, detallecli, eliminar_producto_2, salir
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -33,11 +33,16 @@ urlpatterns = [
     path('addproduc/',addproduc, name='addproduc'),
     path('admlista/',admlista, name='admlista'),
     path('editarprod/<id>',editarprod, name='editarprod'),
-    path('eliminar_producto/<id>',eliminar_producto, name='eliminar_producto'),
+    path('eliminar_producto_2/<id>',eliminar_producto_2, name='eliminar_producto_2'),
     path('admusuarios/',admusuarios, name='admusuarios'),
     path('editaruser/',editaruser, name='editaruser'),
     path('usuarios/',usuarios, name='usuarios'),
     path('salir/',salir, name='salir'),
+    path('agregar/<int:producto_id>',agregar_producto, name='Add'),
+    path('eliminar/<int:producto_id>',eliminar_producto, name='Del'),
+    path('restar/<int:producto_id>',restar_producto, name='Sub'),
+    path('limpiar/',limpiar_carrito, name='CLS'),
+
 
 
 ]

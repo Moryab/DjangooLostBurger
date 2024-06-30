@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{% static 'aplicacion/css/titulocard.css' %}">
 <link rel="stylesheet" href="{% static 'aplicacion/css/btnmenu.css' %}">
 
+
   <!--Imagenes-->
     <!-- Carousel -->
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -104,7 +105,7 @@
                                           <p class="card-text">{{ producto.descripcion }}</p>
                                               {% csrf_token %}
                                               <div class="d-flex flex-column align-items-left">
-                                                  <button type="submit" class="btn precio-card mt-2">${{ producto.precio }} <i class="fas fa-shopping-cart"></i></button>
+                                                  <button onclick="window.location.href='{% url 'Add' producto.id %}'" class="btn precio-card mt-2">${{ producto.precio }} <i class="fas fa-shopping-cart"></i></button>
                                               </div>
                                       </div>
                                   </div>
@@ -446,4 +447,8 @@
           </div>
         </div>
         <p></p>
+
+
+
+<script src="{% static 'aplicacion/js/carrito.js' %}"></script>
 {% endblock contenido %}

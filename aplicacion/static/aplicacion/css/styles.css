@@ -592,138 +592,10 @@ nav,
 
 
 /* Estilos GRAFICO */
-:root {
-  --color_completo: #3b5998;
-  --color_hamburgesas: #00acce;
-  --color_pizza: #e95950;
-  --color_papas: #c8232c;
-  --color_bebidas: black;
-  --background-color: rgb(15, 17, 27);
-  --background-light-gray: #f0f0f0
-}
 
-
-.title_grafico {
-  margin-top: 100px;
-  margin-left: 110px; /* Ajustar según necesidad para alineación exacta con el gráfico */
-  color: #080505;
- position: relative;
-}
-
-.content-grafico {
-  width: 50%;
-  /* Ocupa la mitad de la página */
-  height: auto;
-  /* Altura automática basada en el contenido */
-  display: flex;
-  flex-direction: row;
-  /* Alinea los elementos horizontalmente */
-  justify-content: space-around;
-  align-items: center;
-  margin-left: 0;
-  /* Alinea el contenedor a la izquierda */
-  margin-right: auto;
-  /* Centra el contenedor hacia la derecha */
-  background-color: var(--background-light-gray);
-  /* Fondo gris claro */
-  padding: 20px;
-  /* Espaciado interno */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* Sombra suave */
-}
-
-.grafico {
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background-image: conic-gradient(var(--color_completo) 40%,
-      var(--color_hamburgesas) 40% 70%,
-      var(--color_pizza) 70% 88%,
-      var(--color_papas) 88%);
-  box-shadow: 1px 1px 5px 1px rgb(70, 70, 70);
-}
-
-.leyenda_all {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  margin-left: 20px;
-}
-
-[class^="color_"] {
-  width: 15px;
-  height: 15px;
-  margin-right: 8px;
-  border-radius: 3px;
-}
-
-.color_completo {
-  background-color: var(--color_completo);
-}
-
-.color_hamburgesas {
-  background-color: var(--color_hamburgesas);
-}
-
-.color_pizza {
-  background-color: var(--color_pizza);
-}
-
-.color_papas {
-  background-color: var(--color_papas);
-}
-
-.color_bebidas {
-  background-color: var(--color_bebidas);
-}
-
-.social {
-  color: #000000;
-  line-height: 1.6;
-}
-
-.total {
-  color: #080505;
-  padding: 10px;
-  border-radius: 3px;
-  background-color: rgba(122, 121, 118, 0.616);
-}
 /* Para tablets */
-@media (max-width: 768px) {
-  .content-grafico {
-    width: 70%; /* Ocupa más espacio para tabletas */
-    flex-direction: column; /* Apila los elementos verticalmente */
-    align-items: flex-start; /* Alinea los elementos al inicio */
-  }
-
-  .grafico {
-    width: 300px; /* Tamaño más pequeño para el gráfico */
-    height: 300px;
-    margin-bottom: 20px; /* Espacio debajo del gráfico */
-  }
-
-  .container_leyenda {
-    align-items: flex-start;
-  }
-}
 
 /* Para dispositivos móviles */
-@media (max-width: 480px) {
-  .content-grafico {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    padding: 10px; /* Menos padding */
-  }
-
-  .grafico {
-    width: 250px; /* Tamaño aún más pequeño para el gráfico */
-    height: 250px;
-  }
-
-  .title_grafico {
-    margin-top: 20px; /* Menos espacio superior */
-    font-size: 20px; /* Texto más pequeño */
-  }
-}
 
 /* Estilos de la Tabla */
 .tabla-usuarios {
@@ -867,60 +739,14 @@ nav,
   transform: scale(0.95);
 }
 
-/*Estilo de Carrito de Compras*/
 .item img {
   max-width: 160px;
   /* Tamaño máximo de las imágenes */
   height: auto;
   /* Mantener la proporción */
 }
+/*Estilo de Carrito de Compras*/
 
-.cart {
-  position: fixed;
-  top: 0;
-  right: -250px;
-  /* Posición inicial del carrito fuera de la pantalla */
-  width: 250px;
-  /* Ancho del carrito */
-  height: 100%;
-  background-color: #f9f9f9;
-  border-left: 1px solid #ddd;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-   /*transition: right 0.1s step-end;*/
-  transition: right 0.9s ease;
-  z-index: 1000; /* Asegura que el carrito esté encima de todo */
-
-  /* Transición suave para el movimiento */
-}
-
-.cart-toggle {
-  position: static;
-  top: 20px;
-  right: 160px;
-  background-color: #272626;
-  color: #fff;
-  border: none;
-  border-radius: 100%;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
-}
-
-.cart-toggle:hover {
-  background-color: #05860d;
-  /* Cambia el color al pasar el ratón */
-}
-
-/* Cuando el botón se hace clic */
-#cart-toggle:focus+.cart{
-  right: 0;
-}
-
-.navbar-toggler {
-  margin-left: auto; /* Mueve el botón navbar-toggler al extremo derecho */
-}
 
 
 

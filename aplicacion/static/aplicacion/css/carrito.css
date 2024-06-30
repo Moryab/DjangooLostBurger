@@ -1,0 +1,42 @@
+/* Estilo del carrito */
+.cart {
+    position: fixed;
+    top: 0;
+    right: -350px;  /* Ajustar la posición inicial del carrito fuera de la pantalla */
+    width: 350px;  /* Aumentar el ancho del carrito */
+    background-color: #f9f9f9;
+    border-left: 1px solid #ddd;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: right 0.9s ease;  /* Transición suave para el movimiento */
+    z-index: 1000;  /* Asegura que el carrito esté encima de todo */
+  }
+  
+  /* Estilo del botón del carrito */
+  .cart-toggle {
+    position: static;
+    background-color: #272626;
+    color: #fff;
+    border: none;
+    border-radius: 100%;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Estilo del botón del carrito al pasar el ratón */
+  .cart-toggle:hover {
+    background-color: #05860d;
+  }
+  
+  /* Estilo del botón del carrito al hacer clic */
+  .cart-toggle.active {
+    background-color: #05860d;
+  }
+  
+  /* Posicionamiento del botón del navbar-toggler */
+  .navbar-toggler {
+    margin-left: auto; /* Mueve el botón navbar-toggler al extremo derecho */
+  }
+  

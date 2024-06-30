@@ -35,7 +35,7 @@
                                 <a class="btn btn-sm btn-editar" href="{% url 'editarprod' p.id %}" role="button">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form method="post" action="{% url 'eliminar_producto' p.id %}" class="d-inline">
+                                <form method="post" action="{% url 'eliminar_producto_2' p.id %}" class="d-inline">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-sm btn-borrar btn-confirmar">
                                         <i class="fas fa-trash"></i>

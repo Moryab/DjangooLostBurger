@@ -1,0 +1,52 @@
+<div class="alert alert-primary" role="alert">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="row" colspan="3" class="text-center">CARRITO</th>
+        </tr>
+        <tr>
+          <th scope="col">NOMBRE</th>
+          <th scope="col">PRECIO</th>
+          <th scope="col">CANTIDAD</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if request.session.carrito.items %}
+          {% for key, value in request.session.carrito.items %}
+            <tr>
+              <td>{{ value.nombre }}</td>
+              <td>{{ value.precio }}</td>
+              <td>
+                {{ value.acumulado }}
+                <a href="{% url 'Add' value.producto_id %}" class="badge btn btn-dark badge-dark">+</a>
+                <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-dark badge-dark">-</a>
+              </td>
+            </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="3">
+              <div class="alert alert-danger text-center">Sin Productos</div>
+            </td>
+          </tr>
+        {% endif %}
+        <tr>
+          <th scope="row">Total:</th>
+          <td colspan="2">$ {{ total_carrito }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+  </div>
+  
+  <div class="row text-center">
+    <div class="col-6"><a href="{% url 'CLS' %}" class="btn btn-danger">Limpiar</a></div>
+    <button class="btnpagar" onclick="window.location.href='{% url 'pago' %}'">
+      Pagar
+      <svg class="svgIcon" viewBox="0 0 576 512">
+        <path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z">
+        </path>
+      </svg>
+    </button>
+  </div>
+  

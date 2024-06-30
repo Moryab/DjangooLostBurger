@@ -3,11 +3,37 @@ from .models import Producto
 from .forms import ProductoForm, UserForm
 from django.contrib import messages
 from django.contrib.auth import logout
-
+from aplicacion.Carrito import Carrito
 # Create your views here.
 def index(request):
     productos = Producto.objects.all()
     return render(request, 'aplicacion/index.html', {'productos': productos})
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect(to="index")    
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect(to="index")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect(to="index")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect(to="index")
+
+
+
 
 def nosotros(request):
     return render(request,'aplicacion/nosotros.html')
@@ -164,7 +190,7 @@ def editarprod(request, id):
     }
     return render(request, 'aplicacion/editarprod.html', datos)
 
-def eliminar_producto(request, id):
+def eliminar_producto_2(request, id):
     producto = get_object_or_404(Producto, id=id)
     if request.method == 'POST':
         producto.delete()
