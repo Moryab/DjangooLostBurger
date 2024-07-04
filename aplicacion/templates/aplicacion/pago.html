@@ -3,111 +3,66 @@
 
 {% block contenido %}
 
-
 <link rel="stylesheet" href="{% static 'aplicacion/css/pago.css' %}">
-  <div class="row">
-    <div class="col-75">
-      <div class="container">
-        <form id="Metodo_pago" method="get" class="was-validated">
-          <!--Direccion de envios-->
-          <div class="row">
-            <div class="col-50">
-              <h3>Direccion de Envio</h3>
 
-              <div class="mb-3 mt-3">
-                <label for="fname" class="form-label"><i class="fa fa-user"></i> Nombre Completo</label>
-                <input type="text" class="form-control" id="fname" name="firstname" placeholder="John M. Doe" required oninput="validarfname()">
-                <div class="invalid-feedback">Rellene el campo antes de enviar.</div>
-              </div>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form id="Metodo_pago" method="post" class="was-validated">
+        {% csrf_token %}
+        <!-- Direccion de envios -->
+        <div class="row">
+          <div class="col-50">
+            <h3>Direccion de Envio</h3>
 
-              <div class="mb-3 mt-3">
-                <label for="rutInput" class="form-label"><i class="fas fa-id-card"></i>Ingrese su RUT:</label>
-                <input type="text" class="form-control" id="rutInput" name="rut" placeholder="12345678-9" required oninput="validarRut(rut)">
-                <div class="invalid-feedback">El RUT ingresado no es válido.</div>
-              </div>
-
-              <div class="mb-3 mt-3">
-                <label for="email" class="form-label"><i class="fa fa-envelope"></i> Correo</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="john@example.com" required oninput="validarEmail()">
-                <div class="invalid-feedback">Rellene el campo antes de enviar.</div>
-              </div>
-
-              <div class="mb-3 mt-3">
-                <label for="address" class="form-label"><i class="fa fa-address-card-o"></i> Direccion</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="542 W. 15th Street" required oninput=" validarDireccion()">
-                <div class="invalid-feedback">Rellene el campo antes de enviar.</div>
-              </div>
-              
-              <div class="mb-3 mt-3">
-                <label for="city" class="form-label"><i class="fa fa-institution"></i> Ciudad</label>
-                <input type="text" class="form-control" id="city" name="city" placeholder="Concepcion" required oninput="validarCiudad()">
-                <div class="invalid-feedback">Rellene el campo antes de enviar.</div>
-              </div>
-
+            <div class="mb-3 mt-3">
+              <label for="rutInput" class="form-label"><i class="fas fa-id-card"></i>Ingrese su RUT:</label>
+              <input type="text" class="form-control" id="rutInput" name="rut" placeholder="12345678-9" required oninput="validarRut(rut)">
+              <div class="invalid-feedback">El RUT ingresado no es válido.</div>
             </div>
-            <!--Tarjeta-pago-->
-            <div class="col-50">
-              <h3>Pago</h3>
-              <label for="fname">Tarjetas Aceptadas</label>
-              <div class="icon-container">
-                <i class="fab fa-cc-visa" style="color:navy;"></i>
-                <i class="fab fa-cc-paypal" style="color:blue;"></i>
-                <i class="fab fa-cc-mastercard" style="color:red;"></i>
-              </div>
 
-              <div class="mb-3 mt-3">
-                <label for="cname" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" id="cardname" name="cardname" placeholder="John More Doe" required oninput="validarCardname()">
-                <div class="invalid-feedback">Rellene el campo antes de enviar.</div>
-              </div>
-
-              <label for="tarjeta" class="form-label">Número de Tarjeta:</label>
-              <input type="text" class="form-control" id="tarjeta" name="tarjeta" minlength="19" maxlength="19"placeholder="0000 0000 0000 0000" required oninput="formatTarjeta()">
+            <div class="mb-3 mt-3">
+              <label for="address" class="form-label"><i class="fa fa-address-card-o"></i> Direccion</label>
+              <input type="text" class="form-control" id="address" name="address" placeholder="542 W. 15th Street" required oninput="validarDireccion()">
               <div class="invalid-feedback">Rellene el campo antes de enviar.</div>
-
-              <label for="metodo">Método de Pago:</label>
-              <select class="form-select" id="metodo" name="metodo" required>
-                <option value="visa">Visa</option>
-                <option value="mastercard">Mastercard</option>
-                <option value="paypal">PayPal</option>
-                <!-- Agrega más opciones de métodos de pago según sea necesario -->
-              </select>
-              <div class="row">
-                <div class="col-50">
-                  <label for="expyear" class="form-label">Fecha de Expiración:</label>
-                  <input type="text" class="form-control" id="expyear" name="expyear" maxlength="5" placeholder="07/12" required oninput="validarFechaExpiracion()">
-                  <div class="invalid-feedback">Rellene el campo antes de enviar.</div>
-
-                </div>
-                <div class="col-50">
-                  <label for="cvv" class="form-label">CVV</label>
-                  <input type="text" class="form-control" id="cvv" name="cvv" placeholder="352" required oninput="validarCVV()">
-                  <div class="invalid-feedback">Rellene el campo antes de enviar.</div>
-
-                </div>
+            </div>
+            
+            <div class="mb-3 mt-3">
+              <label for="telefono" class="form-label">Teléfono:</label>
+              <div class="input-group">
+                <select class="form-select" id="prefijo" name="prefijo" required onchange="validarPrefijo()">
+                  <option value="" selected>Sin Seleccionar</option>
+                  <option value="+56">+56 Chile</option>
+                  <option value="+34">+34 España</option>
+                  <option value="+52">+52 México</option>
+                  <option value="+54">+54 Argentina</option>
+                  <option value="+1">+1 EE.UU.</option>
+                  <!-- Agrega más prefijos según sea necesario -->
+                </select>
+                <input type="tel" class="form-control" id="telefono" name="telefono" required oninput="validarTelefono()">
+                <div id="error-telefono" id="error-prefijo" class="invalid-feedback">Seleccione opción antes de enviar. Solo se permiten números.</div>
               </div>
             </div>
 
           </div>
-          <label>
-            <input type="checkbox" checked="checked" name="sameadr"> Direccion de Envio igual que la facturacion
-          </label>
-          <div class="text-end">
-            <button type="submit" class="btn" id="pagar">Pagar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="col-25">
+        </div>
+        <div class="text-end">
+          <button type="submit" class="btn" id="pagar">Pagar</button>
+        </div>
+      </form>
     </div>
   </div>
+  <div class="col-25">
+  </div>
+</div>
 
-  
+<script src="{% static 'aplicacion/js/rut.js' %}"></script>
+<script src="{% static 'aplicacion/js/valrut.js' %}"></script>
+<script src="{% static 'aplicacion/js/pago.js' %}"></script>
+<script src="{% static 'aplicacion/js/telefonoval.js' %}"></script>
 
-  <script src="{% static 'aplicacion/js/rut.js' %}"></script>
-  <script src="{% static 'aplicacion/js/valrut.js' %}"></script>
-  <script src="{% static 'aplicacion/js/pago.js' %}"></script>
-  <script>
-    handleFormSubmit(); // Llama a la función para manejar el envío del formulario
-  </script>
-  {% endblock contenido %}
+<script>
+  handleFormSubmit(); // Llama a la función para manejar el envío del formulario
+</script>
+
+{% endblock contenido %}

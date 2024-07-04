@@ -121,295 +121,125 @@
   <!-- hamburguesas -->
   <div class="tab-content">
     <div id="hamburguesas" class="container tab-pane active"><br>
-      <div class="container">
-        <h3 class="titulos-cards">Hamburguesas</h3>
-        <div class="row">
-          <div class="col-md-12">
+        <div class="container">
+            <h3 class="titulos-cards">Hamburguesas</h3>
             <div class="row">
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-                <div class="card h-100 p-3 shadow border border-white rounded">
-                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/hbbq.png' %}" alt="hbbq">
-                  <div class="card-body">
-                    <h4 class="card-title">Hamburguesa BBQ</h4>
-                    <p class="card-text">carne de res-BBQ-aros de cebolla-tocino-queso cheddar</p>
-                    <div class="d-flex flex-column align-items-left">
-                      <label for="cart-toggle" class="btn precio-card mt-2">$7.500 <i
-                          class="fas fa-shopping-cart"></i></label>
+                <div class="col-md-12">
+                    <div class="row">
+                        {% for producto in productos %}
+                            {% if producto.categoria == 'Hamburguesas' %}
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                                    <div class="card h-100 p-3 shadow border border-white rounded">
+                                        <img class="card-img-top img-fluid" src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ producto.nombre }}</h4>
+                                            <p class="card-text">{{ producto.descripcion }}</p>
+                                                {% csrf_token %}
+                                                <div class="d-flex flex-column align-items-left">
+                                                    <button onclick="window.location.href='{% url 'Add' producto.id %}'" class="btn precio-card mt-2">${{ producto.precio }} <i class="fas fa-shopping-cart"></i></button>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-                <div class="card h-100 p-3 shadow border border-white rounded">
-                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/gclasica.png' %}" alt="Hclasica">
-                  <div class="card-body">
-                    <h4 class="card-title">Hamburguesa Clasica</h4>
-                    <p class="card-text">carne de res-cebolla-tomate-lechuga-salsa especial de la casa-queso cheddar</p>
-                    <div class="d-flex flex-column align-items-left">
-                      <label for="cart-toggle" class="btn precio-card mt-2">$7.500 <i
-                          class="fas fa-shopping-cart"></i></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-                <div class="card h-100 p-3 shadow border border-white rounded">
-                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/hpollo.png' %}" alt="hpollo">
-                  <div class="card-body">
-                    <h4 class="card-title">Hamburguesa Pollo</h4>
-                    <p class="card-text">pechuga de pollo marinada-especias y hierbas-lechuga-tomate-mayonesa</p>
-                    <div class="d-flex flex-column align-items-left">
-                      <label for="cart-toggle" class="btn precio-card mt-2">$7.500 <i
-                          class="fas fa-shopping-cart"></i></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-                <div class="card h-100 p-3 shadow border border-white rounded">
-                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/hpavo.png' %}" alt="hpavo">
-                  <div class="card-body">
-                    <h4 class="card-title">Hamburguesa Pavo</h4>
-                    <p class="card-text">carne de pavo-lechuga-tomate-salsa de yogur griego</p>
-                    <div class="d-flex flex-column align-items-left">
-                      <label for="cart-toggle" class="btn precio-card mt-2">$5.500 <i
-                          class="fas fa-shopping-cart"></i></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-                <div class="card h-100 p-3 shadow border border-white rounded">
-                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/hvegana.png' %}" alt="hvegana">
-                  <div class="card-body">
-                    <h4 class="card-title">Hamburguesa Vegana</h4>
-                    <p class="card-text">hamburguesa vegana(mezcla de garbanzos, remolacha y avena)-pan
-                      integral-lechuga-tomate-pepinillos</p>
-                    <div class="d-flex flex-column align-items-left">
-                      <label for="cart-toggle" class="btn precio-card mt-2">$6.500<i
-                          class="fas fa-shopping-cart"></i></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
   </div>
   <!--PIZZAS-->
   <div class="tab-content">
     <div id="pizzas" class="container tab-pane active"><br>
-      <div class="container">
-        <h3 class="titulos-cards">Pizzas</h3>
-        <div class="row">
-          <div class="col-md-12">
+        <div class="container">
+            <h3 class="titulos-cards">Pizzas</h3>
             <div class="row">
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-                <div class="card h-100 p-3 shadow border border-white rounded">
-                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/pepperoniPi.jpg' %}"alt="Pepperoni">
-                  <div class="card-body">
-                    <h4 class="card-title">Pizza Pepperoni</h4>
-                    <p class="card-text">Pepperoni, queso mozzarella, salsa de tomate</p>
-                    <div class="d-flex flex-column align-items-left">
-                      <label for="cart-toggle" class="btn precio-card mt-2">$9.990 <i
-                          class="fas fa-shopping-cart"></i></label>
+                <div class="col-md-12">
+                    <div class="row">
+                        {% for producto in productos %}
+                            {% if producto.categoria == 'Pizzas' %}
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                                    <div class="card h-100 p-3 shadow border border-white rounded">
+                                        <img class="card-img-top img-fluid" src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ producto.nombre }}</h4>
+                                            <p class="card-text">{{ producto.descripcion }}</p>
+                                                {% csrf_token %}
+                                                <div class="d-flex flex-column align-items-left">
+                                                    <button onclick="window.location.href='{% url 'Add' producto.id %}'" class="btn precio-card mt-2">${{ producto.precio }} <i class="fas fa-shopping-cart"></i></button>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-                <div class="card h-100 p-3 shadow border border-white rounded">
-                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/pizza.png' %}" alt="Pizzaveg">
-                  <div class="card-body">
-                    <h4 class="card-title">Pizza Vegetariana</h4>
-                    <p class="card-text">Pimientos, champiñones, cebollas, tomates, queso
-                      mozzarella</p>
-                    <div class="d-flex flex-column align-items-left">
-                      <label for="cart-toggle" class="btn precio-card mt-2">$10.500 <i
-                          class="fas fa-shopping-cart"></i></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-                <div class="card h-100 p-3 shadow border border-white rounded">
-                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/piña.png' %}" alt="Phawaian">
-                  <div class="card-body">
-                    <h4 class="card-title">Pizza Hawaiana</h4>
-                    <p class="card-text">Jamón, piña, queso mozzarella, salsa de tomate</p>
-                    <div class="d-flex flex-column align-items-left">
-                      <label for="cart-toggle" class="btn precio-card mt-2">$6.990 <i
-                          class="fas fa-shopping-cart"></i></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-                <div class="card h-100 p-3 shadow border border-white rounded">
-                  <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/italiana.jpg' %}" alt="Pizzaveg">
-                  <div class="card-body">
-                    <h4 class="card-title">Pizza italiana</h4>
-                    <p class="card-text">Tomate, queso mozzarella, hojas de albahaca</p>
-                    <div class="d-flex flex-column align-items-left">
-                      <label for="cart-toggle" class="btn precio-card mt-2">$9.500 <i
-                          class="fas fa-shopping-cart"></i></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
   </div>
   <!--Papas fritas-->
   <div class="tab-content">
     <div id="papas" class="container tab-pane active"><br>
-      <h3 class="titulos-cards">Papas Fritas</h3>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/caritas.jpg' %}" alt="caritas">
-                <div class="card-body">
-                  <h4 class="card-title">Papita smiley</h4>
-                  <p class="card-text">deliciosamente crujientes por fuera, con un interior blando que casi se
-                    deshace en la boca</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$3.500 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
+        <div class="container">
+            <h3 class="titulos-cards">Papas Fritas</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        {% for producto in productos %}
+                            {% if producto.categoria == 'Papas Fritas' %}
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                                    <div class="card h-100 p-3 shadow border border-white rounded">
+                                        <img class="card-img-top img-fluid" src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ producto.nombre }}</h4>
+                                            <p class="card-text">{{ producto.descripcion }}</p>
+                                                {% csrf_token %}
+                                                <div class="d-flex flex-column align-items-left">
+                                                    <button onclick="window.location.href='{% url 'Add' producto.id %}'" class="btn precio-card mt-2">${{ producto.precio }} <i class="fas fa-shopping-cart"></i></button>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/salchipapa.webp' %}" alt="salchipapa">
-                <div class="card-body">
-                  <h4 class="card-title">Salchipapa</h4>
-                  <p class="card-text">Plato de papas y salchichas fritas, que se puede acompañar con mayonesa o
-                    salsa
-                    de tomate</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$3.500 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/tocino.jpg' %}" alt="tocino">
-                <div class="card-body">
-                  <h4 class="card-title">Papas fritas con queso y tocino</h4>
-                  <p class="card-text">Papas fritas con queso cheddar fundido, tocino crujiente y cebollín</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$5.000 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/rusticas.png' %}" alt="rusticas">
-                <div class="card-body">
-                  <h4 class="card-title">Papas fritas rusticas</h4>
-                  <p class="card-text">Papas fritas condimentadas con aceite, ajo, sal , pimienta , paprika, curry
-                    o
-                    perejil.</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$4.200 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
   </div>
   <!--bebidas-->
   <div class="tab-content">
     <div id="bebidas" class="container tab-pane active"><br>
-      <h3 class="titulos-cards">Bebidas</h3>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/rosa.png' %}" alt="cocarosalia">
-                <div class="card-body">
-                  <h4 class="card-title">Coca Cola Movement by Rosalía</h4>
-                  <p class="card-text">Coca-Cola con una "explosión de notas refrescantes de frambuesa y sabores
-                    especiados".</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$1.500 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
+        <div class="container">
+            <h3 class="titulos-cards">Bebidas</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        {% for producto in productos %}
+                            {% if producto.categoria == 'Bebidas' %}
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
+                                    <div class="card h-100 p-3 shadow border border-white rounded">
+                                        <img class="card-img-top img-fluid" src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ producto.nombre }}</h4>
+                                            <p class="card-text">{{ producto.descripcion }}</p>
+                                                {% csrf_token %}
+                                                <div class="d-flex flex-column align-items-left">
+                                                    <button onclick="window.location.href='{% url 'Add' producto.id %}'" class="btn precio-card mt-2">${{ producto.precio }} <i class="fas fa-shopping-cart"></i></button>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/sprite.png' %}" alt="sprite">
-                <div class="card-body">
-                  <h4 class="card-title">Sprite</h4>
-                  <p class="card-text">Lata Sprite 350 ML</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$1.500 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/cocaaa.png' %}" alt="coca">
-                <div class="card-body">
-                  <h4 class="card-title">Coca-Cola</h4>
-                  <p class="card-text">Lata Coca-Cola 350 ML</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$1.500 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/fanta.jpg' %}" alt="fanta">
-                <div class="card-body">
-                  <h4 class="card-title">Fanta</h4>
-                  <p class="card-text">Lata Fanta 350 ML</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$1.500 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt-3">
-              <div class="card h-100 p-3 shadow border border-white rounded">
-                <img class="card-img-top img-fluid" src="{% static 'aplicacion/img/latapepsi2.webp' %}" alt="pepsi">
-                <div class="card-body">
-                  <h4 class="card-title">Pepsi</h4>
-                  <p class="card-text">Lata Pepsi 350 ML</p>
-                  <div class="d-flex flex-column align-items-left">
-                    <label for="cart-toggle" class="btn precio-card mt-2">$1.500 <i
-                        class="fas fa-shopping-cart"></i></label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
   </div>
 
@@ -450,5 +280,4 @@
 
 
 
-<script src="{% static 'aplicacion/js/carrito.js' %}"></script>
 {% endblock contenido %}

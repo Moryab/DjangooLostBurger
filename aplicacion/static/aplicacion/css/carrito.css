@@ -39,4 +39,9 @@
   .navbar-toggler {
     margin-left: auto; /* Mueve el botón navbar-toggler al extremo derecho */
   }
-  
+/* CSS para ajustar el tamaño de los botones + y - */
+.btn-custom {
+  background-color: red;
+  padding: 1px; /* Ajusta el padding para cambiar el tamaño del botón */
+  font-size: 0.875rem; /* Ajusta el tamaño de la fuente */
+}

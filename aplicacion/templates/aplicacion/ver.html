@@ -1,56 +1,56 @@
+<!-- detalle_pedido.html -->
 {% extends "aplicacion/baseadmin.html" %}
 {% load static %}
 
 {% block contenidoadmin %}
 
+<div class="container-sm mt-2">
+    <h1 class="h3 text-center">Detalle del Pedido</h1>
+    <div class="card">
+        <div class="card-header">Pedido #{{ pedido.id_pedido }}</div>
+        <div class="card-body">
+            <h5 class="card-title">Información del Cliente</h5>
+            <p>Nombre: {{ pedido.cliente.username }}</p>
+            <p>Rut: {{ pedido.rut }}</p>
+            <p>Dirección: {{ pedido.direccion }}</p>
+            <p>Teléfono: {{ pedido.telefono }}</p>
+            <p>Email: {{ pedido.cliente.email }}</p>
 
-  <!-- Contenido principal -->
+            <h5 class="mt-4">Productos Pedidos</h5>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for detalle in detalles_pedido %}
+                        <tr>
+                            <td>{{ detalle.producto.nombre }}</td>
+                            <td>{{ detalle.cantidad }}</td>
+                            <td>${{ detalle.precio_unitario }}</td>
+                            <td>${{ detalle.subtotal }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        
+            <h5 class="mt-4">Total Pagado</h5>
+            <p><strong>Total Pagado: ${{ total_pagado }}</strong></p>
 
-    <div class="container-sm mt-2">
-      <h1 class="h3 text-center">Detalle del Pedido</h1>
-      <div class="card">
-          <div class="card-header">Pedido #1234</div>
-          <div class="card-body">
-              <h5 class="card-title">Información del Cliente</h5>
-              <p>Nombre: Juan Pérez</p>
-              <p>Rut: 22.402.202-K</p>
-              <p>Dirección: Calle Falsa 123, Ciudad, País</p>
-              <p>Teléfono: 555-1234</p>
-              <p>Email: juan.perez@example.com</p>
-              <h5 class="mt-4">Productos Pedidos</h5>
-              <div class="table-responsive">
-                  <table class="table">
-                      <thead>
-                          <tr>
-                              <th>Producto</th>
-                              <th>Cantidad</th>
-                              <th>Precio Unitario</th>
-                              <th>Subtotal</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td>Hamburguesa Especial</td>
-                              <td>2</td>
-                              <td>$5.000</td>
-                              <td>$10.000</td>
-                          </tr>
-                          <tr>
-                              <td>Papas Fritas</td>
-                              <td>1</td>
-                              <td>$2.000</td>
-                              <td>$2.000</td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
-              <p class="mt-3"><strong>Total Pagado: $12.000</strong></p>
-              <h5 class="mt-4">Estado del Pedido</h5>
-              <p>Actual: Entregado</p>
-              <div class="text-center"style="margin-top: 40px;">
-                  <a href="{% url 'admpedidos' %}" class="btn">Volver</a>
-              </div>
-          </div>
-      </div>
-  </div>
+            <h5 class="mt-4">Estado del Pedido</h5>
+            <p>Actual: {{ pedido.estado }}</p>
+
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="{% url 'admpedidos' %}" class="btn">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock contenidoadmin %}

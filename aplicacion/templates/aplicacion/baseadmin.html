@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    {% if messages %}
+{% if messages %}
 
     {% for message in messages %}
   
@@ -30,7 +30,7 @@
         </script>
       {% endif %}
   
-          {% if message.level == 30 %}
+        {% if message.level == 30 %}
             <script>
               //alerta de advertencia
               Swal.fire({
@@ -40,7 +40,8 @@
                 confirmButtonText: 'Ok'
               })
             </script>
-          {% endif %}
+        {% endif %}
+
     {% endfor %}
   
 {% endif %}
@@ -87,13 +88,19 @@
                     <img src="{% static 'aplicacion/img/Logo.png' %}"alt="Imagen de perfil" class="rounded-circle" width="30" height="30">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="perfil.html"> <i class="fas fa-user icono-perfil"></i>Mi perfil</i></a>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a class="dropdown-item" href="#"> <i class="fas fa-user icono-perfil">{{user.username}}</i></i></a>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="{% url 'index' %}"><i
+                    <li>
+                        <a class="dropdown-item" href="{% url 'salir' %}"><i
                                 class="fas fa-sign-out-alt  icono-salir"></i>Cerrar sesión</i></a></li>
+                    {% else %}
+                    {% endif %}
+
                 </ul>
             </div>
         </div>

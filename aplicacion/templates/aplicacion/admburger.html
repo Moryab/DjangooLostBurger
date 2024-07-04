@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block contenidoadmin %}
+<!-- Enlaces a Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!--widgets-->
     <div class="container mt-4">
@@ -66,6 +68,67 @@
             </div>
         </div>
     </div>
+
+    <div style="max-width: 1400px; margin: 0 auto;">
+        <canvas id="miGrafico" style="height: 530px;"></canvas>
+      </div>
+      
+      <script>
+        // Datos de ejemplo para el gráfico
+        var datos = {
+          labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
+          datasets: [{
+            label: 'Ventas mensuales',
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',  // Color para Enero
+              'rgba(54, 162, 235, 0.2)',  // Color para Febrero
+              'rgba(255, 206, 86, 0.2)',  // Color para Marzo
+              'rgba(75, 192, 192, 0.2)',  // Color para Abril
+              'rgba(153, 102, 255, 0.2)', // Color para Mayo
+              'rgba(255, 159, 64, 0.2)',  // Color para Junio
+              'rgba(54, 162, 235, 0.2)'   // Color para Julio
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',    // Borde para Enero
+              'rgba(54, 162, 235, 1)',    // Borde para Febrero
+              'rgba(255, 206, 86, 1)',    // Borde para Marzo
+              'rgba(75, 192, 192, 1)',    // Borde para Abril
+              'rgba(153, 102, 255, 1)',   // Borde para Mayo
+              'rgba(255, 159, 64, 1)',    // Borde para Junio
+              'rgba(54, 162, 235, 1)'     // Borde para Julio
+            ],
+            borderWidth: 1,
+            data: [65, 59, 80, 81, 56, 55, 40]
+          }]
+        };
+      
+        // Configuración del gráfico
+        var opciones = {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        };
+      
+        // Obtener el contexto del lienzo (canvas) donde se dibujará el gráfico
+        var ctx = document.getElementById('miGrafico').getContext('2d');
+      
+        // Crear el gráfico
+        var miGrafico = new Chart(ctx, {
+          type: 'bar',
+          data: datos,
+          options: opciones
+        });
+      </script>
+      
+      
+
+
 
 {% endblock contenidoadmin %}
 

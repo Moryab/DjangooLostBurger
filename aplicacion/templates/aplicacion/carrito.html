@@ -15,11 +15,14 @@
           {% for key, value in request.session.carrito.items %}
             <tr>
               <td>{{ value.nombre }}</td>
-              <td>{{ value.precio }}</td>
-              <td>
-                {{ value.acumulado }}
-                <a href="{% url 'Add' value.producto_id %}" class="badge btn btn-dark badge-dark">+</a>
-                <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-dark badge-dark">-</a>
+              <td>{{ value.acumulado }}</td>
+              <td>{{ value.cantidad }}
+                <a href="{% url 'Add' value.producto_id %}" class="btn btn-custom">
+                  <i class="fas fa-plus"></i>
+              </a>
+              <a href="{% url 'Sub' value.producto_id %}" class="btn btn-custom">
+                  <i class="fas fa-minus"></i>
+              </a>
               </td>
             </tr>
           {% endfor %}

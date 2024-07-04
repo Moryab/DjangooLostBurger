@@ -1,14 +1,19 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Producto
-from .forms import ProductoForm, UserForm
+from .models import Producto, Perfil, Pedido, DatosPago, DetallePedido
+from .forms import UserForm
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from aplicacion.Carrito import Carrito
+from .context_processor import total_carrito
+
 # Create your views here.
 def index(request):
     productos = Producto.objects.all()
     return render(request, 'aplicacion/index.html', {'productos': productos})
 
+@login_required
 def agregar_producto(request, producto_id):
     carrito = Carrito(request)
     producto = Producto.objects.get(id=producto_id)
@@ -41,11 +46,27 @@ def nosotros(request):
 def ubicacion(request):
     return render(request,'aplicacion/ubicacion.html')
 
+@login_required
 def pedidos(request):
-    return render(request,'aplicacion/pedidos.html')
+    pedidos = Pedido.objects.all()
+    
+    return render(request, 'aplicacion/pedidos.html', {'pedidos': pedidos,})
 
-def detallecli(request):
-    return render(request,'aplicacion/detallecli.html')
+def detallecli(request, id_pedido):
+    pedido = get_object_or_404(Pedido, pk=id_pedido)
+    
+    # Obtener los detalles del pedido asociados al pedido
+    detalles_pedido = DetallePedido.objects.filter(pedido=pedido)
+    
+    # Calcular el total pagado sumando los subtotales de los detalles
+    total_pagado = sum(detalle.subtotal for detalle in detalles_pedido)
+    
+    context = {
+        'pedido': pedido,
+        'detalles_pedido': detalles_pedido,
+        'total_pagado': total_pagado,
+    }
+    return render(request, 'aplicacion/detallecli.html', context)
 
 def login(request):
     return render(request,'registration/login.html')
@@ -76,14 +97,76 @@ def salir(request):
 def recuperar(request):
     return render(request,'aplicacion/recuperar.html')
 
+
+
+@login_required
 def pago(request):
-    return render(request,'aplicacion/pago.html')
+    if request.method == 'POST':
+        # Obtener los datos del formulario
+        rut = request.POST.get('rut')
+        direccion = request.POST.get('address')
+        telefono = request.POST.get('telefono')
+        prefijo_telefono = request.POST.get('prefijo')
+
+        # Crear el objeto Pedido
+        pedido = Pedido.objects.create(
+            cliente=request.user,
+            rut=rut,
+            direccion=direccion,
+            telefono=f"{prefijo_telefono} {telefono}" if prefijo_telefono else telefono,
+            total=0.0,  # Ajusta esto según tu lógica de negocio
+            estado='Pendiente'  # Ajusta esto según tu lógica de negocio
+        )
+
+        # Guardar los productos del carrito como DetallePedido asociados al Pedido
+        carrito = Carrito(request)
+        for key, item in carrito.carrito.items():
+            producto_id = item['producto_id']
+            cantidad = item['cantidad']
+            precio_unitario = item['acumulado'] / cantidad if cantidad > 0 else 0  # Calcula el precio unitario
+
+            DetallePedido.objects.create(
+                pedido=pedido,
+                producto_id=producto_id,
+                cantidad=cantidad,
+                precio_unitario=precio_unitario,
+                subtotal=item['acumulado']
+            )
+
+        # Crear y guardar el objeto DatosPago asociado al Pedido
+        datospago = DatosPago.objects.create(
+            rut=rut,
+            pedido=pedido,
+            direccion=direccion,
+            telefono=f"{prefijo_telefono} {telefono}" if prefijo_telefono else telefono
+        )
+
+        # Limpiar el carrito después de completar el pedido
+        carrito.limpiar()
+
+        # Redirigir a una página de confirmación o detalles de pedido
+        return redirect('detallecli', id_pedido=pedido.id_pedido)
+
+    # Si es GET o cualquier otro método, simplemente renderiza el formulario vacío
+    return render(request, 'aplicacion/pago.html')
+
 
 def admburger(request):
     return render(request,'aplicacion/admburger.html')
 
 def admpedidos(request):
-    return render(request,'aplicacion/admpedidos.html')
+    if request.method == 'POST':
+        id_pedido = request.POST.get('id_pedido')
+        nuevo_estado = request.POST.get('estado')
+        pedido = get_object_or_404(Pedido, id_pedido=id_pedido)
+        if nuevo_estado in [estado[0] for estado in Pedido.ESTADOS_PEDIDO]:
+            pedido.estado = nuevo_estado
+            pedido.save()
+        return redirect('admpedidos')
+    
+    pedidos = Pedido.objects.all()
+    return render(request, 'aplicacion/admpedidos.html', {'pedidos': pedidos})
+    
 
 def admpagregar(request):
     return render(request,'aplicacion/admpagregar.html')
@@ -129,8 +212,21 @@ def addproduc(request):
 
 
 
-def ver(request):
-    return render(request,'aplicacion/ver.html')
+def ver(request, id_pedido):
+    pedido = get_object_or_404(Pedido, pk=id_pedido)
+    
+    # Obtener los detalles del pedido asociados al pedido
+    detalles_pedido = DetallePedido.objects.filter(pedido=pedido)
+    
+    # Calcular el total pagado sumando los subtotales de los detalles
+    total_pagado = sum(detalle.subtotal for detalle in detalles_pedido)
+    
+    context = {
+        'pedido': pedido,
+        'detalles_pedido': detalles_pedido,
+        'total_pagado': total_pagado,
+    }
+    return render(request, 'aplicacion/ver.html', context)
 
 
 
@@ -200,10 +296,46 @@ def eliminar_producto_2(request, id):
       
 
 def admusuarios(request):
-    return render(request,'aplicacion/admusuarios.html')
+    admusuarios = Perfil.objects.all()
 
-def editaruser(request):
-    return render(request,'aplicacion/editaruser.html')
+    datos = {
+        "admusuarios": admusuarios,
+    }
+    
+    return render(request, 'aplicacion/admusuarios.html', datos)
+
+def editaruser(request, user_id):
+    usuario = get_object_or_404(User, id=user_id)
+    perfil = get_object_or_404(Perfil, usuario=usuario)
+
+    if request.method == 'POST':
+
+        usuario.first_name = request.POST.get('nombre')
+        usuario.last_name = request.POST.get('apellido')
+        usuario.email = request.POST.get('email')
+        usuario.is_staff = 'staff' in request.POST
+        usuario.is_active = 'is_active' in request.POST
+
+        perfil.telefono = request.POST.get('telefono')
+        perfil.prefijo_telefono = request.POST.get('prefijo_telefono')
+        perfil.direccion = request.POST.get('direccion')
+
+        usuario.save()
+        perfil.save()
+        messages.set_level(request,messages.WARNING)
+        messages.warning(request,"Usuario modificado")
+        return redirect('admusuarios')
+
+    return render(request, 'aplicacion/editaruser.html', {'usuario': usuario, 'perfil': perfil})
+
+def deshabilitar_usuario(request, user_id):
+    usuario = get_object_or_404(User, id=user_id)
+    usuario.is_active = False
+    usuario.save()
+    messages.set_level(request,messages.WARNING)
+    messages.warning(request,"Usuario Desabilitado!")
+    return redirect('admusuarios')  # Redirige a la vista de la lista de usuarios
+
 
 def usuarios(request):
     

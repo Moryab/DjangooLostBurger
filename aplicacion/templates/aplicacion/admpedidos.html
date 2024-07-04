@@ -10,9 +10,7 @@
     <div class="container mt-5">
       <h1>Gestión de Pedidos</h1>
       <input class="form-control mb-4" id="tableSearch" type="text" placeholder="Buscar pedidos...">
-      <p><a href="admin.html#pedidos" class="nodecolink"><i class="fas fa-sync-alt" aria-hidden="true"></i> Actualizar
-          Pedidos
-      </p></a>
+      <p><a href="admin.html#pedidos" class="nodecolink"><i class="fas fa-sync-alt" aria-hidden="true"></i> Actualizar Pedidos</a></p>
       <div class="table-responsive">
         <table class="table mt-2">
           <thead class="table-dark">
@@ -23,142 +21,69 @@
               <th>Fecha</th>
               <th>Dirección</th>
               <th>Teléfono</th>
-              <th>Total</th>
               <th>Estado</th>
               <th class="text-right">Detalles pedidos</th>
               <th>Cambiar estado</th>
             </tr>
           </thead>
           <tbody id="pedidosTable">
-            <!-- Ejemplo de filas -->
+            {% for pedido in pedidos %}
             <tr>
-              <td>#1234</td>
-              <td>Juan Pérez</td>
-              <td>20.222.223-k</td>
-              <td>2024-04-10</td>
-              <td>Calle Falsa 123</td>
-              <td>+56923423423</td>
-              <td>$15.500</td>
-              <td class="estilopendiente">
-                <span class="estilopendiente p-1 mt-5">
-                  <i class="fas fa-clock" aria-hidden="true"></i> Pendiente
-                </span>
-              </td>
-              <td>
-                <a class="btn-info" href="{% url 'ver' %}">
-                  <i class="fa fa-eye" aria-hidden="true"></i> Ver detalle
-                </a>
-              </td>
-              <td>
-                <div class="dropdown">
-                  <button type="button" class="btn-estado dropdown-toggle btn-sm h6" data-bs-toggle="dropdown">
-                    Seleccione Estado
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item small-text" href="#">Pendiente</a></li>
-                    <li><a class="dropdown-item small-text" href="#">En camino</a></li>
-                    <li><a class="dropdown-item small-text" href="#">Entregado</a></li>
-                    <li><a class="dropdown-item small-text" href="#">Cancelado</a></li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>#1235</td>
-              <td>Maria López</td>
-              <td>20.222.223-k</td>
-              <td>2024-04-12</td>
-              <td>Avenida Siempreviva 456</td>
-              <td>+56923423423</td>
-              <td>$8.300</td>
+              <td>{{ pedido.id_pedido }}</td>
+              <td>{{ pedido.cliente }}</td>
+              <td>{{ pedido.rut }}</td>
+              <td>{{ pedido.fecha }}</td>
+              <td>{{ pedido.direccion }}</td>
+              <td>{{ pedido.telefono }}</td>
               <td class="">
-                <span class="enruta p-1 mt-5">
-                  <i class="fa fa-truck" aria-hidden="true"></i> En camino
-                </span>
-              </td>
-              <td>
-                <a class="btn-info" href="{% url 'ver' %}">
-                  <i class="fa fa-eye" aria-hidden="true"></i> Ver detalle
-                </a>
-              </td>
-              <td>
-                <div class="dropdown">
-                  <button type="button" class="btn-estado dropdown-toggle btn-sm h6" data-bs-toggle="dropdown">
-                    Seleccione Estado
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item small-text" href="#">Pendiente</a></li>
-                    <li><a class="dropdown-item small-text" href="#">En camino</a></li>
-                    <li><a class="dropdown-item small-text" href="#">Entregado</a></li>
-                    <li><a class="dropdown-item small-text" href="#">Cancelado</a></li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>#1236</td>
-              <td>Carlos Gómez</td>
-              <td>20.222.223-k</td>
-              <td>2024-04-14</td>
-              <td>Rincón Quieto 789</td>
-              <td>+56923423423</td>
-              <td>$12.000</td>
-              <td class="">
-                <span class="entregado p-1 mt-5">
-                  <i class="fa fa-thumbs-up" aria-hidden="true"></i> Entregado
-                </span>
-              </td>
-              <td>
-                <a class="btn-info" href="{% url 'ver' %}">
-                  <i class="fa fa-eye" aria-hidden="true"></i> Ver detalle
-                </a>
-              </td>
-              <td>
-                <div class="dropdown">
-                  <button type="button" class="btn-estado dropdown-toggle btn-sm h6" data-bs-toggle="dropdown">
-                    Seleccione Estado
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item small-text" href="#">Pendiente</a></li>
-                    <li><a class="dropdown-item small-text" href="#">En camino</a></li>
-                    <li><a class="dropdown-item small-text" href="#">Entregado</a></li>
-                    <li><a class="dropdown-item small-text" href="#">Cancelado</a></li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>#1236</td>
-              <td>Carlos Gómez</td>
-              <td>20.222.223-k</td>
-              <td>2024-04-14</td>
-              <td>Rincón Quieto 789</td>
-              <td>+56923423423</td>
-              <td>$12.000</td>
-              <td class="">
+                <span class="p-1 mt-5">
+                  {% if pedido.estado == "Pendiente" %}
+                  <span class="estilopendiente p-1 mt-5">
+                    <i class="fas fa-clock" aria-hidden="true"></i> Pendiente
+                  </span>
+
+                  {% elif pedido.estado == "En camino" %}
+                  <span class="enruta p-1 mt-5">
+                    <i class="fa fa-truck" aria-hidden="true"></i> En camino
+                  </span>
+
+                  {% elif pedido.estado == "Entregado" %}
+                  <span class="entregado p-1 mt-5">
+                    <i class="fa fa-thumbs-up" aria-hidden="true"></i> Entregado
+                  </span>
+
+                  {% elif pedido.estado == "Cancelado" %}
                 <span class="cancelado p-1 mt-5">
                   <i class="fa fa-thumbs-down" aria-hidden="true"></i> Cancelado
+                </span>                  
+                {% endif %}
                 </span>
               </td>
               <td>
-                <a class="btn-info" href="{% url 'ver' %}">
+                <a class="btn-info" href="{% url 'ver' pedido.id_pedido %}">
                   <i class="fa fa-eye" aria-hidden="true"></i> Ver detalle
                 </a>
               </td>
               <td>
-                <div class="dropdown">
-                  <button type="button" class="btn-estado dropdown-toggle btn-sm h6" data-bs-toggle="dropdown">
-                    Seleccione Estado
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item small-text" href="#">Pendiente</a></li>
-                    <li><a class="dropdown-item small-text" href="#">En camino</a></li>
-                    <li><a class="dropdown-item small-text" href="#">Entregado</a></li>
-                    <li><a class="dropdown-item small-text" href="#">Cancelado</a></li>
-                  </ul>
-                </div>
+                <form method="post" action="{% url 'admpedidos' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="id_pedido" value="{{ pedido.id_pedido }}">
+                  <div class="dropdown">
+                    <button type="button" class="btn-estado dropdown-toggle btn-sm h6" data-bs-toggle="dropdown">
+                      Seleccione Estado
+                    </button>
+                    <ul class="dropdown-menu">
+                      {% for estado in pedido.ESTADOS_PEDIDO %}
+                        <li>
+                          <button type="submit" name="estado" value="{{ estado.0 }}" class="dropdown-item small-text">{{ estado.1 }}</button>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </form>
               </td>
             </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
@@ -166,4 +91,3 @@
   </div>
 
 {% endblock contenidoadmin %}
-

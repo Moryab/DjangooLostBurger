@@ -7,33 +7,18 @@
     <div class="container mt-5" id="pedidosContainer">
         <h2>Mis Pedidos</h2>
         <div class="list-group">
+            {% for pedido in pedidos %}
             <!-- Primer pedido -->
-            <a href="{% url 'detallecli' %}" class="list-group-item list-group-item-action flex-column align-items-start">
+            <a href="{% url 'detallecli' pedido.id_pedido %}" class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Pedido #1234</h5>
+                    <h4 class="mb-3">ID pedido: {{ pedido.id_pedido }}</h4>
                     <small>3 días atrás</small>
                 </div>
-                <p class="mb-1">Total pagado: $15.500</p>
-                <small>Estado: Entregado</small>
+                <h5 class="mt-2">Estado del Pedido</h5>
+                <p>Actual: {{ pedido.estado }}</p>
             </a>
-            <!-- Segundo pedido -->
-            <a href="{% url 'detallecli' %}" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Pedido #1235</h5>
-                    <small>2 días atrás</small>
-                </div>
-                <p class="mb-1">Total pagado: $8.300</p>
-                <small>Estado: En proceso</small>
-            </a>
-            <!-- Tercer pedido -->
-            <a href="{% url 'detallecli' %}" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Pedido #1236</h5>
-                    <small>1 día atrás</small>
-                </div>
-                <p class="mb-1">Total pagado: $12.000</p>
-                <small>Estado: Pendiente de envío</small>
-            </a>
+            {% endfor %}
+
         </div>
     </div>
     
