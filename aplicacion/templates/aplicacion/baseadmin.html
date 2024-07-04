@@ -42,6 +42,7 @@
             </script>
         {% endif %}
 
+
     {% endfor %}
   
 {% endif %}
@@ -87,7 +88,7 @@
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{% static 'aplicacion/img/Logo.png' %}"alt="Imagen de perfil" class="rounded-circle" width="30" height="30">
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     {% if user.is_authenticated %}
                     <li>
                         <a class="dropdown-item" href="#"> <i class="fas fa-user icono-perfil">{{user.username}}</i></i></a>

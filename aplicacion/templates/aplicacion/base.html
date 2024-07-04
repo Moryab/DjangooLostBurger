@@ -80,27 +80,34 @@
 
         <ul class="navbar-nav ms-auto">
           {% if user.is_authenticated %}
-          <li class="nav-item text-light">
-            
-            <li>
-              <a href="#"class="fas fa-user btn">{{user.username}}</a>
-            </li>
-
-            <li>
-              <a href="{% url 'salir' %}"class="btn">
-              <i class="fas fa-user"></i> Cerrar</a>
-            </li>
-
-          {% else %}
-
-          <li>
-            <a href="{% url "login" %}"class="btn">
-              <i class="fas fa-user"></i> Ingresa</a>
+          <!-- Botón circular con imagen de perfil y menú desplegable -->
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{% static 'aplicacion/img/Logo.png' %}" alt="Imagen de perfil" class="rounded-circle" width="30" height="30">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                  <li>
+                      <a class="dropdown-item" href="#"><i class="fas fa-user icono-perfil">{{ user.username }}</i></a>
+                  </li>
+                  <li>
+                      <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                      <a class="dropdown-item" href="{% url 'salir' %}"><i class="fas fa-sign-out-alt icono-salir"></i> Cerrar sesión</a>
+                  </li>
+              </ul>
           </li>
-
+          {% else %}
+          <!-- Botón de inicio de sesión -->
+          <li>
+              <a href="{% url 'login' %}" class="btn">
+                  <i class="fas fa-user"></i> Ingresa
+              </a>
           </li>
           {% endif %}
-        </ul>
+      </ul>
+      
       </div>
       <!--Icono de Boton de carrito-->
       <button id="cart-toggle" class="cart-toggle"><i class="fas fa-shopping-cart"></i></button>
