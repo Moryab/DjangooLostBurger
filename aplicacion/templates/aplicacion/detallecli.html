@@ -43,7 +43,15 @@
             <p><strong>Total Pagado: ${{ total_pagado }}</strong></p>
 
             <h5 class="mt-4">Estado del Pedido</h5>
-            <p>Actual: {{ pedido.estado }}</p>
+            {% if pedido.estado == "Pendiente" %}
+            <p style="color: orange;">Actual: {{ pedido.estado }}</p>
+            {% elif pedido.estado == "En camino" %}
+            <p style="color: blue;">Actual: {{ pedido.estado }}</p>
+            {% elif pedido.estado == "Entregado" %}
+            <p style="color: green;">Actual: {{ pedido.estado }}</p>
+            {% elif pedido.estado == "Cancelado" %}
+            <p style="color: red;">Actual: {{ pedido.estado }}</p>
+            {% endif %}
 
             <div class="text-center" style="margin-top: 40px;">
                 <a href="{% url 'pedidos' %}" class="btn">Volver</a>

@@ -59,7 +59,7 @@ class Pedido(models.Model):
     fecha = models.DateField(auto_now_add=True)
     direccion = models.CharField(max_length=255)
     telefono = models.CharField(max_length=15)
-    total = models.DecimalField(max_digits=10, decimal_places=2)
+    total = models.IntegerField(validators=[MinValueValidator(0)],null=False)
     estado = models.CharField(max_length=10, choices=ESTADOS_PEDIDO, default='Pendiente')
 
 
@@ -87,8 +87,8 @@ class DetallePedido(models.Model):
     pedido = models.ForeignKey('Pedido', related_name='detalles', on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField()
-    precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
-    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
+    precio_unitario = models.IntegerField(validators=[MinValueValidator(0)],null=False)
+    subtotal = models.IntegerField(validators=[MinValueValidator(0)],null=False)
 
     def __str__(self):
         return f'Detalle del Pedido {self.pedido.id_pedido} - Producto: {self.producto.nombre}'

@@ -15,8 +15,15 @@
                     <small>{{ pedido.fecha|date:"D, d M Y" }}</small>
                 </div>
                 <h5 class="mt-2">Estado del Pedido</h5>
-                <p>Actual: {{ pedido.estado }}</p>
-            </a>
+                {% if pedido.estado == "Pendiente" %}
+                <p style="color: orange;">Actual: {{ pedido.estado }}</p>
+                {% elif pedido.estado == "En camino" %}
+                <p style="color: blue;">Actual: {{ pedido.estado }}</p>
+                {% elif pedido.estado == "Entregado" %}
+                <p style="color: green;">Actual: {{ pedido.estado }}</p>
+                {% elif pedido.estado == "Cancelado" %}
+                <p style="color: red;">Actual: {{ pedido.estado }}</p>
+                {% endif %}</a>
             {% endfor %}
 
         </div>
