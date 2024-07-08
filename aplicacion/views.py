@@ -18,6 +18,7 @@ def agregar_producto(request, producto_id):
     carrito = Carrito(request)
     producto = Producto.objects.get(id=producto_id)
     carrito.agregar(producto)
+    messages.success(request, "Se añadido producto al carro, revise su carro")
     return redirect(to="index")    
 
 def eliminar_producto(request, producto_id):
@@ -48,7 +49,7 @@ def ubicacion(request):
 
 @login_required
 def pedidos(request):
-    pedidos = Pedido.objects.all()
+    pedidos = Pedido.objects.filter(cliente=request.user)
     
     return render(request, 'aplicacion/pedidos.html', {'pedidos': pedidos,})
 
@@ -296,34 +297,48 @@ def eliminar_producto_2(request, id):
       
 
 def admusuarios(request):
-    admusuarios = Perfil.objects.all()
+    # Obtener todos los usuarios de Django
+    usuarios = User.objects.all()
 
-    datos = {
-        "admusuarios": admusuarios,
-    }
-    
-    return render(request, 'aplicacion/admusuarios.html', datos)
+    datos = []
+    for usuario in usuarios:
+        try:
+            # Intentar obtener el perfil asociado al usuario
+            perfil = Perfil.objects.get(usuario=usuario)
+        except Perfil.DoesNotExist:
+            perfil = None
+
+        datos.append({
+            'usuario': usuario,
+            'perfil': perfil,
+        })
+
+    return render(request, 'aplicacion/admusuarios.html', {'usuarios': datos})
 
 def editaruser(request, user_id):
     usuario = get_object_or_404(User, id=user_id)
-    perfil = get_object_or_404(Perfil, usuario=usuario)
+    
+    try:
+        perfil = Perfil.objects.get(usuario=usuario)
+    except Perfil.DoesNotExist:
+        perfil = Perfil(usuario=usuario)
 
     if request.method == 'POST':
-
-        usuario.first_name = request.POST.get('nombre')
-        usuario.last_name = request.POST.get('apellido')
-        usuario.email = request.POST.get('email')
+        # Actualizar campos del usuario
+        usuario.first_name = request.POST.get('nombre', usuario.first_name)
+        usuario.last_name = request.POST.get('apellido', usuario.last_name)
+        usuario.email = request.POST.get('email', usuario.email)
         usuario.is_staff = 'staff' in request.POST
         usuario.is_active = 'is_active' in request.POST
-
-        perfil.telefono = request.POST.get('telefono')
-        perfil.prefijo_telefono = request.POST.get('prefijo_telefono')
-        perfil.direccion = request.POST.get('direccion')
-
         usuario.save()
+
+        # Actualizar campos del perfil
+        perfil.telefono = request.POST.get('telefono', perfil.telefono)
+        perfil.prefijo_telefono = request.POST.get('prefijo_telefono', perfil.prefijo_telefono)
+        perfil.direccion = request.POST.get('direccion', perfil.direccion)
         perfil.save()
-        messages.set_level(request,messages.WARNING)
-        messages.warning(request,"Usuario modificado")
+
+        messages.success(request, 'Usuario modificado correctamente.')
         return redirect('admusuarios')
 
     return render(request, 'aplicacion/editaruser.html', {'usuario': usuario, 'perfil': perfil})

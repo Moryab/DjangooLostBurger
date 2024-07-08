@@ -37,25 +37,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for p in admusuarios %}
+                        {% for dato in usuarios %}
                         <tr>
-                            <td>{{ p.usuario.username }}</td>
-                            <td>{{ p.usuario.first_name }}</td>
-                            <td>{{ p.usuario.last_name }}</td>
-                            <td>{{ p.usuario.email }}</td>
-                            <td>{{ p.prefijo_telefono }} {{ p.telefono }}</td>
-                            <td>{{ p.direccion }}</td>
+                            <td>{{ dato.usuario.username }}</td>
+                            <td>{{ dato.usuario.first_name }}</td>
+                            <td>{{ dato.usuario.last_name }}</td>
+                            <td>{{ dato.usuario.email }}</td>
+                            {% if dato.perfil %}
+                                <td>{{ dato.perfil.prefijo_telefono }} {{ dato.perfil.telefono }}</td>
+                                <td>{{ dato.perfil.direccion }}</td>
+                            {% else %}
+                                <td>Sin informacion</td>
+                                <td>Sin informacion</td>
+                            {% endif %}
                             <td>
-                                <input type="checkbox" {% if p.usuario.is_staff %}checked{% endif %}>
+                                <input type="checkbox" {% if dato.usuario.is_staff %}checked{% endif %}>
                             </td>
                             <td>
-                                <input type="checkbox" {% if p.usuario.is_active %}checked{% endif %}>
+                                <input type="checkbox" {% if dato.usuario.is_active %}checked{% endif %}>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-editar" href="{% url 'editaruser' p.usuario.id  %}">
+                                <a class="btn btn-sm btn-editar" href="{% url 'editaruser' dato.usuario.id  %}">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a class="btn btn-sm btn-borrar btn-confirmar" href="{% url 'deshabilitar_usuario' p.usuario.id %}">
+                                <a class="btn btn-sm btn-borrar btn-confirmar" href="{% url 'deshabilitar_usuario' dato.usuario.id %}">
                                     <i class="fas fa-ban"></i> 
                                 </a>
                             </td>
@@ -66,4 +71,5 @@
             </div>
         </div>
     </div>
+    
 {% endblock contenidoadmin %}
